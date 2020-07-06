@@ -4,18 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Controller//extends BaseController
-
+class Controller
 {
-    // use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    public function form()
+    public function welcome()
     {
-        return view('form');
+    	return view('welcome');
     }
-    public function process(Request $rq)
-    {
-        $ten = $rq->get('ten');
-        return $ten;
-    }
-
 }

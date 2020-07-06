@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Lop;
 
 
-class LopController //extends Controller
+class LopController extends Controller
 {
     public function view_all()
     {
