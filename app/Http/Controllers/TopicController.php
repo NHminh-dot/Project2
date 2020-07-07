@@ -3,39 +3,46 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Lop;
+use App\Models\Topic;
 
 
-class LopController extends Controller
+class TopicController extends Controller
 {
     public function view_all()
     {
-    	$array_lop = Lop::all();
-    	return view('view_all',[
-    		'array_lop' => $array_lop
+    	$array_topic = Topic::all();
+    	return view("view_all",[
+    		'array_topic' => $array_topic
     	]);
     }
     public function view_insert()
     {
-    	return view('view_insert');
+    	return view("topic.view_insert");
     }
     public function process_insert(Request $rq)
     {
-    	Lop::insert([
-    		'ten' => $rq->ten
-    	]);
-    	return redirect() -> route('lop.view_all') -> with('success', 'Thêm lớp thành công');
-    }
-    public function view_update($ma)
-    {
-    	$lop = Lop::find($ma);
+    	Topic::create($rq->all());
 
-    	return view('view_update', ['lop' => $lop]);
+    	return redirect()->route('topic.view_all')->with("success", "Thêm topic thành công");
     }
-    public function process_update($ma, Request $rq)
+    public function view_update($id)
     {
-    	Lop::find($ma) -> update(['ten' => $rq->ten]);
+    	$topic = Topic::find($id);
 
-    	return redirect() -> route('lop.view_all') -> with('success', 'Sửa lớp thành công');
+    	return view("topic.view_update", [
+            'topic' => $topic]
+        );
+    }
+    public function process_update($id, Request $rq)
+    {
+    	Topic::find($id)->update($rq->all());
+
+    	return redirect()->route("topic.view_all")->with("success", "Sửa topic thành công");
+    }
+    public function delete($id)
+    {
+        Topic::find($id)->delete();
+
+        return redirect()->route("topic.view_all")->with("Success", "Xóa topic thành công");
     }
 }

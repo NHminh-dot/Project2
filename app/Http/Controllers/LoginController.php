@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Exception;
+use Session;
 
-
-class LoginController extends Controller
+class LoginController //extends Controller
 {
     public function view_login()
     {
@@ -19,7 +20,7 @@ class LoginController extends Controller
     		->where('password', $rq->password)
     		->firstOrFail();
 
-    		Session::put('id',$user->id);
+    		Session::put('user_id',$user->id);
     		Session::put('username',$user->username);
 
     		return redirect()->route('welcome')->with('success', 'Đăng nhập thành công');
