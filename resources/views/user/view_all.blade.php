@@ -1,3 +1,8 @@
+@extends('welcome')
+
+@section('content')
+
+
 <a href="{{ route('user.view_insert') }}">
 	New User
 </a>
@@ -82,3 +87,4 @@
 		</tr>
 	@endforeach
 </table>
+@endsection

@@ -29,14 +29,19 @@
 </head>
 
 <body>
-    <!-- ============================================================== -->
-    <!-- login page  -->
-    <!-- ============================================================== -->
+@if (Session::has('error'))
+	{{ Session::get('error') }}
+@endif
+@if (Session::has('success'))
+	{{ Session::get('success') }}
+@endif
+
     <div class="splash-container">
         <div class="card ">
             <div class="card-header text-center"><a href="../index.html"><img class="logo-img" src="images/logo.png" alt="logo"></a><span class="splash-description">Please enter your user information.</span></div>
             <div class="card-body">
-                <form>
+                <form action="{{ route('process_login') }}" method="post">
+                	{{ csrf_field() }}
                     <div class="form-group">
                         <input class="form-control form-control-lg" name="login_name" id="username" type="text" placeholder="Username" autocomplete="off">
                     </div>
