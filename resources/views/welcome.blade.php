@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
 
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link href="{{asset('css/concept-master_assets_libs_css_style.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/circular-std_style.css')}}">
     <link rel="stylesheet" href="{{asset('css/fontawesome-all.css')}}">
     <title>Assmin</title>
