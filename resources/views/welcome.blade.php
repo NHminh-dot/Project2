@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
 
-        <link rel="stylesheet" href="{{asset('css/concept-master_assets_vendor_bootstrap_css_bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link href="{{asset('css/concept-master_assets_libs_css_style.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css/concept-master_assets_vendor_fonts_circular-std_style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/concept-master_assets_vendor_fonts_fontawesome_css_fontawesome-all.css')}}">
+    <link rel="stylesheet" href="{{asset('css/circular-std_style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/fontawesome-all.css')}}">
     <title>Assmin</title>
 </head>
 <body>
