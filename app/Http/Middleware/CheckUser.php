@@ -14,13 +14,14 @@ class CheckUser
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+     public function handle($request, Closure $next)
     {
-        if (Session::has('user_id')) {
-            return $next($request);    
+        if(Session::has('user_id')){
+            return $next($request);
         }
-        else {
-            return redirect()->route('view_login')->with('error', 'Mày chưa đăng nhập');
+        else{
+            return redirect()->route('view_login')->with('error','Mày chưa đăng nhập');
         }
     }
+
 }

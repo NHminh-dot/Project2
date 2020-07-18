@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @if (Session::has('success'))
 	{{ Session::get('success') }}
 @endif
@@ -16,3 +17,37 @@
 		</li>
 	</ul>
 </div> --}}
+=======
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/circular-std_style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/fontawesome-all.css')}}">
+    <title>Assmin</title>
+</head>
+<body>
+    <div class="dashboard-main-wrapper">
+        @include('layout/navbar')
+        @include('layout/sidebar')
+        <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <div class="ecommerce-widget">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+ 
+</html>
+>>>>>>> 3843e53125ddc518a25c4d41b79176d73c7591a8

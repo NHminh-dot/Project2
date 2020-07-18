@@ -1,3 +1,6 @@
+@extends('welcome')
+
+@section('content')
 <a href="{{ route('role.view_insert') }}">
 	New Role
 </a>
@@ -42,3 +45,4 @@
 		</tr>
 	@endforeach
 </table>
+@endsection
