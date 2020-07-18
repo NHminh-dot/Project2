@@ -1,5 +1,9 @@
 <?php 
 
+Route::get('test','Controller@test');
+Route::get('show','Controller@show');
+Route::post('post_test','Controller@post_test')->name('post_test');
+
 Route::get('','LoginController@view_login')->name('view_login');
 Route::post('process_login','LoginController@process_login')->name('process_login');
 
@@ -16,6 +20,8 @@ Route::group(['middleware' => 'CheckUser'], function() {
 		Route::get("view_update/{id}","$controller@view_update")->name("view_update");
 		Route::post("process_update/{id}","$controller@process_update")->name("process_update");
 		Route::get("delete/{id}","$controller@delete")->name("delete");
+
+		Route::get("view_self_info/{id}","$controller@view_self_info")->name("view_self_info");
 	});
 
 	$controller = "RoleController";
@@ -42,6 +48,17 @@ Route::group(['middleware' => 'CheckUser'], function() {
 
 	$controller = "CategoryController";
 	Route::group(["prefix" => "category","as" => "category."], function() use($controller)
+	{
+		Route::get("","$controller@view_all")->name("view_all");
+		Route::get("view_insert","$controller@view_insert")->name("view_insert");
+		Route::post("process_insert","$controller@process_insert")->name("process_insert");  
+		Route::get("view_update/{id}","$controller@view_update")->name("view_update");
+		Route::post("process_update/{id}","$controller@process_update")->name("process_update");
+		Route::get("delete/{id}","$controller@delete")->name("delete");
+	});
+
+	$controller = "PostController";
+	Route::group(["prefix" => "post","as" => "post."], function() use($controller)
 	{
 		Route::get("","$controller@view_all")->name("view_all");
 		Route::get("view_insert","$controller@view_insert")->name("view_insert");

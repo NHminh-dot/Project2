@@ -18,10 +18,10 @@ class Comment extends Migration
             $table->text('content');
             $table->integer('post_id')->unsigned();
             $table->integer('created_by')->unsigned();
-            $table->timestamp('created_at');
-            $table->integer('status');
-            $table->timestamp('deleted_at')->nullable();
+            $table->integer('status')->default(1);
+            $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->foreign('post_id')->references('id')->on('post');
             $table->foreign('created_by')->references('id')->on('user');
         });

@@ -24,7 +24,7 @@ class User extends Migration
             $table->string('picture', 200)->nullable();
             $table->integer('gender');
             $table->integer('status')->default(1);
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('last_time_login')->nullable();
             $table->integer('role_id')->unsigned();

@@ -17,13 +17,13 @@ class Post extends Migration
             $table->increments('id');
             $table->string('title', 50);
             $table->text('content');
-            $table->timestamp('created_at');
             $table->integer('created_by')->unsigned();
             $table->integer('category_id')->unsigned();
-            $table->integer('status');
+            $table->integer('status')->default(1);
+            $table->integer('up_vote')->default(0);
+            $table->integer('down_vote')->default(0);
+            $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
-            $table->integer('upvote');
-            $table->integer('downvote');
             $table->timestamp('deleted_at')->nullable();
             $table->foreign('created_by')->references('id')->on('user');
             $table->foreign('category_id')->references('id')->on('category');

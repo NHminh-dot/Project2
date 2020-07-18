@@ -1,4 +1,4 @@
-<form action="{{ route('user.process_insert') }}" method="post">
+<form action="{{ route('user.process_insert') }}" method="post" enctype="multipart\form-data">
 	{{ csrf_field() }}
 	Username:
 	<input type="text" name="username">
@@ -19,7 +19,7 @@
 	<textarea name="biography"></textarea>
 	<br>
 	Picture:
-	<input type="file" name="picture">
+	<input type="file" name="picture" accept="image/*">
 	<br>
 	Gender:
 	<input type="radio" name="gender" value="0">Female

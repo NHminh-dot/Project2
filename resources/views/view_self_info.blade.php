@@ -1,47 +1,40 @@
-<a href="{{ route('user.view_insert') }}">
-	New User
-</a>
-@if (Session::has('success'))
-	<h1>
-		{{ Session::get('success') }}
-	</h1>
-@endif
-<table border="1" width="100%">
-	<caption>
-		<form>
-			Search Username: 
-			<input type="search" name="search_username" value="{{ $search_username }}">
-		</form>
-	</caption>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table border="1" width="100%">
 	<tr>
-		<th>ID</th>
+		{{-- <th>ID</th> --}}
 		<th>USERNAME</th>
-		<th>LOGIN NAME</th>
+		{{-- <th>LOGIN NAME</th> --}}
 		{{-- <th>PASSWORD</th> --}}
 		<th style="width: 100px;">EMAIL</th>
 		<th>DOB</th>
 		<th>BIOGRAPHY</th>
 		<th>PICTURE</th>
 		<th>GENDER</th>
-		<th>STATUS</th>
-		<th>CREATED AT</th>
-		<th>UPDATED AT</th>
-		<th>LAST TIME LOGIN</th>
+		{{-- <th>STATUS</th> --}}
+		{{-- <th>CREATED AT</th> --}}
+		{{-- <th>UPDATED AT</th> --}}
+		{{-- <th>LAST TIME LOGIN</th> --}}
 		<th>ROLE</th>
-		<th>EDIT</th>
-		<th>DELETE</th>
+		{{-- <th>EDIT</th> --}}
+		{{-- <th>DELETE</th> --}}
 	</tr>
 	@foreach ($array_user as $user)
 		<tr style="text-align: center;">
-			<td>
+			{{-- <td>
 				{{ $user->id }}
-			</td>
+			</td> --}}
 			<td>
 				{{ $user->username }}
 			</td>
-			<td>
+			{{-- <td>
 				{{ $user->login_name }}
-			</td>
+			</td> --}}
 			{{-- <td>
 				{{ $user->password }}
 			</td> --}}
@@ -63,7 +56,7 @@
 			<td>
 				{{ $user->gender }}
 			</td>
-			<td>
+{{-- 			<td>
 				{{ $user->status }}
 			</td>
 			<td>
@@ -74,11 +67,11 @@
 			</td>
 			<td>
 				{{ $user->last_time_login }}
-			</td>
+			</td> --}}
 			<td>
 				{{ $user->role->name }}
 			</td>
-			<td>
+			{{-- <td>
 				<a href="{{ route('user.view_update',['id' => $user->id]) }}">
 					Edit
 				</a>
@@ -87,8 +80,9 @@
 				<a href="{{ route('user.delete',['id' => $user->id]) }}">
 					Delete
 				</a>
-			</td>
+			</td> --}}
 		</tr>
 	@endforeach
 </table>
-{{ $array_user->links() }}
+</body>
+</html>
