@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-@if (Session::has('success'))
+{{-- @if (Session::has('success'))
 	{{ Session::get('success') }}
 @endif
 <h1>
@@ -8,7 +7,7 @@
 <a href="{{ route('logout') }}">
 	Đăng xuất
 </a>
-{{-- <div>
+<div>
 	<ul>
 		<li>
 			<a href="{{ route('view_self_info',['id' => $user->id]) }}">
@@ -41,6 +40,12 @@
             <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
                     <div class="ecommerce-widget">
+                        @if (Session::has('success'))
+                            {{ Session::get('success') }}
+                        @endif
+                        {{-- <h1>
+                            Chào bạn {{ Session::get('username') }}
+                        </h1> --}}
                         @yield('content')
                     </div>
                 </div>
@@ -50,4 +55,3 @@
 </body>
  
 </html>
->>>>>>> 3843e53125ddc518a25c4d41b79176d73c7591a8

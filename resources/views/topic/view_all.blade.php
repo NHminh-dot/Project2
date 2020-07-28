@@ -1,3 +1,7 @@
+@extends('welcome')
+
+@section('content')
+	
 <a href="{{ route('topic.view_insert') }}">
 	New Topic
 </a>
@@ -50,3 +54,5 @@
 		</tr>
 	@endforeach
 </table>
+{{ $array_topic->links() }}
+@endsection

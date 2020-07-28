@@ -1,3 +1,7 @@
+@extends('welcome')
+
+@section('content')	
+
 <a href="{{ route('category.view_insert') }}">
 	New Category
 </a>
@@ -54,3 +58,5 @@
 		</tr>
 	@endforeach
 </table>
+{{ $array_category->links() }}
+@endsection

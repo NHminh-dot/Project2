@@ -14,7 +14,7 @@ class PostController extends Controller
     protected $table = "post";
     public function view_all()
     {
-    	$array_post = Post::with("category")->get();
+    	$array_post = Post::with("category")->paginate(10);
     	return view("$this->table.view_all",[
     		"array_post" => $array_post
     	]);

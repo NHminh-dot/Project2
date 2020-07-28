@@ -34,7 +34,7 @@ class LoginController //extends Controller
     {
         $user_id = Session::get('user_id');
         User::find($user_id)->update([
-            'last_time_login'  => Carbon::now()->toDateTimeString()
+            'last_time_login' => Carbon::now()->toDateTimeString()
         ]);
     	Session::flush();
 

@@ -56,7 +56,7 @@
 			<td>
 				{{ $user->gender }}
 			</td>
-{{-- 			<td>
+			{{-- <td>
 				{{ $user->status }}
 			</td>
 			<td>

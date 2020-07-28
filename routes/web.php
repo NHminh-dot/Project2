@@ -1,5 +1,6 @@
 <?php 
 
+Route::get('index','Controller@index');
 Route::get('test','Controller@test');
 Route::get('show','Controller@show');
 Route::post('post_test','Controller@post_test')->name('post_test');

@@ -14,7 +14,7 @@ class CategoryController extends Controller
     protected $table = "category";
     public function view_all()
     {
-    	$array_category = Category::with("topic")->get();
+    	$array_category = Category::with("topic")->paginate(10);
     	return view("$this->table.view_all",[
     		"array_category" => $array_category
     	]);

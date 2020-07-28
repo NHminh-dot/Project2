@@ -1,3 +1,7 @@
+@extends('welcome')
+
+@section('content')
+
 <a href="{{ route('user.view_insert') }}">
 	New User
 </a>
@@ -92,3 +96,4 @@
 	@endforeach
 </table>
 {{ $array_user->links() }}
+@endsection

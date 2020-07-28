@@ -12,7 +12,8 @@ class TopicController extends Controller
     protected $table = "topic";
     public function view_all()
     {
-    	$array_topic = Topic::with("user")->get();
+    	$array_topic = Topic::with("user")->paginate(10);
+    
     	return view("$this->table.view_all",[
     		"array_topic" => $array_topic
     	]);

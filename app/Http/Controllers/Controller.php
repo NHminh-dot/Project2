@@ -27,4 +27,8 @@ class Controller
     {
     	return view('show');
     }
+    public function index()
+    {
+        return view('index');
+    }
 }

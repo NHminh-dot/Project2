@@ -1,3 +1,7 @@
+@extends('welcome')
+
+@section('content')
+
 <a href="{{ route('post.view_insert') }}">
 	New Post
 </a>
@@ -70,3 +74,5 @@
 		</tr>
 	@endforeach
 </table>
+{{ $array_post->links() }}
+@endsection
