@@ -1,3 +1,6 @@
+@extends('welcome')
+
+@section('content')
 <form action="{{ route('role.process_update',['id' => $role->id]) }}" method="post">
 	{{ csrf_field() }}
 	Id role:
@@ -14,3 +17,4 @@
 	<br>
 	<button>Update</button>
 </form>
+@endsection

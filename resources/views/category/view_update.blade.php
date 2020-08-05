@@ -1,3 +1,7 @@
+@extends('welcome')
+
+@section('content')	
+
 <form action="{{ route('category.process_update',['id' => $category->id]) }}" method="post">
 	{{ csrf_field() }}
 	Id category:
@@ -29,3 +33,4 @@
 	<br>
 	<button>Update</button>
 </form>
+@endsection

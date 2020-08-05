@@ -1,3 +1,6 @@
+@extends('welcome')
+
+@section('content')
 <form action="{{ route('post.process_insert') }}" method="post">
 	{{ csrf_field() }}
 	Title:
@@ -17,3 +20,4 @@
 	<br>
 	<button>Create</button>
 </form>
+@endsection

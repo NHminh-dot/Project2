@@ -1,3 +1,6 @@
+@extends('welcome')
+
+@section('content')
 <form action="{{ route('post.process_update',['id' => $post->id]) }}" method="post">
 	{{ csrf_field() }}
 	Id post:
@@ -37,3 +40,4 @@
 	<input type="text" readonly="readonly" name="deleted_at" value="{{ $post->deleted_at }}">
 	<button>Update</button>
 </form>
+@endsection

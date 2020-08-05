@@ -1,3 +1,6 @@
+@extends('welcome')
+
+@section('content')
 <form action="{{ route('topic.process_insert') }}" method="post">
 	{{ csrf_field() }}
 	Name topic:
@@ -8,3 +11,4 @@
 	<br>
 	<button>Create</button>
 </form>
+@endsection

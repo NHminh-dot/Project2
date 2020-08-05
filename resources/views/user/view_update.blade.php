@@ -1,3 +1,7 @@
+@extends('welcome')
+
+@section('content')
+
 <form action="{{ route('user.process_update',['id' => $user->id]) }}" method="post">
 	{{ csrf_field() }}
 	Id:
@@ -54,3 +58,4 @@
 	<br>
 	<button>Update</button>
 </form>
+@endsection

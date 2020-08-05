@@ -1,3 +1,6 @@
+@extends('welcome')
+
+@section('content')
 <form action="{{ route('role.process_insert') }}" method="post">
 	{{ csrf_field() }}
 	Name role:
@@ -5,3 +8,4 @@
 	<br>
 	<button>Create</button>
 </form>
+@endsection

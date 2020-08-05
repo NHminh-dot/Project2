@@ -1,3 +1,7 @@
+@extends('welcome')
+
+@section('content')
+
 <form action="{{ route('user.process_insert') }}" method="post" enctype="multipart\form-data">
 	{{ csrf_field() }}
 	Username:
@@ -37,3 +41,4 @@
 	<br>
 	<button>Create</button>
 </form>
+@endsection
