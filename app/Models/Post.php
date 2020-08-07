@@ -25,4 +25,8 @@ class Post extends Model
     {
     	return $this->belongsTo('App\Models\User','created_by');
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

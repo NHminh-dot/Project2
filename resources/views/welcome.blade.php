@@ -26,10 +26,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
 
-        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css/circular-std_style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/fontawesome-all.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/circular-std_style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fonts/fontawesome/css/fontawesome-all.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/chartist.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/morris.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/c3.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/flag-icon.min.css') }}">
     <title>Assmin</title>
 </head>
 <body>
@@ -52,6 +57,25 @@
             </div>
         </div>
     </div>
+     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <!-- bootstap bundle js -->
+    <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
+    <!-- slimscroll js -->
+    <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
+    <!-- main js -->
+    <script src="{{ asset('js/main-js.js') }}"></script>
+    <!-- chart chartist js -->
+    {{-- <script src="{{ asset('js/chartist.min.js') }}"></script> --}}
+    <!-- sparkline js -->
+    {{-- <script src="{{ asset('js/jquery.sparkline.js') }}"></script> --}}
+    <!-- morris js -->
+    {{-- <script src="{{ asset('js/raphael.min.js') }}"></script>
+    <script src="{{ asset('js/morris.js') }}"></script> --}}
+    <!-- chart c3 js -->
+    {{-- <script src="{{ asset('js/c3.min.js') }}"></script>
+    <script src="{{ asset('js/d3-5.4.0.min.js') }}"></script>
+    <script src="{{ asset('js/C3chartjs.js') }}"></script>
+    <script src="{{ asset('js/dashboard-ecommerce.js') }}"></script> --}}
 </body>
  
 </html>

@@ -17,10 +17,10 @@
 			<input type="search" name="search_username" value="{{ $search_username }}">
 		</form>
 	</caption>
-	<tr>
+	<tr style="text-align: center;">
 		<th>ID</th>
 		<th>USERNAME</th>
-		<th>LOGIN NAME</th>
+		{{-- <th>LOGIN NAME</th> --}}
 		{{-- <th>PASSWORD</th> --}}
 		<th style="width: 100px;">EMAIL</th>
 		<th>DOB</th>
@@ -43,9 +43,9 @@
 			<td>
 				{{ $user->username }}
 			</td>
-			<td>
+			{{-- <td>
 				{{ $user->login_name }}
-			</td>
+			</td> --}}
 			{{-- <td>
 				{{ $user->password }}
 			</td> --}}
@@ -65,7 +65,16 @@
 				<img src="{{ asset('storage/photo/$user->picture') }}">
 			</td>
 			<td>
-				{{ $user->gender }}
+				{{-- {{ $user->gender }} --}}
+				@if ($user->gender==0)
+					Nữ
+				@endif	
+				@if ($user->gender==1)
+					Nam
+				@endif	
+				@if ($user->gender==2)
+					Khác
+				@endif
 			</td>
 			<td>
 				{{ $user->status }}

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/circular-std_style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/fontawesome-all.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fonts/fontawesome/css/fontawesome-all.css') }}">
     <style>
     html,
     body {
@@ -26,6 +26,9 @@
         padding-bottom: 40px;
         background-image: url({{ asset('storage/photo/M73T8JZyToRbyt9RjASFRi2SasL0bXc2n3Sj8K7X.png') }});
     }
+    .logo-img{
+        width: 200px;
+    }
     </style>
 </head>
 
@@ -33,8 +36,8 @@
     <div class="splash-container">
         <div class="card ">
             <div class="card-header text-center">
-                <a href="../index.html">
-                    <img class="logo-img" src="images/logo.png" alt="logo">
+                <a href="#">
+                    <img class="logo-img" src="storage/photo/logoblue.png" alt="logo">
                 </a>
                 <span class="splash-description">
                     {{-- Please enter your user information. --}}

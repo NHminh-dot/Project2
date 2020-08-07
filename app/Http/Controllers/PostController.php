@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
-
+use Session;
 
 
 class PostController extends Controller
@@ -28,7 +28,17 @@ class PostController extends Controller
     }
     public function process_insert(Request $rq)
     {
-    	Post::create($rq->all());
+    	// Post::create($rq->all());
+        $user_id = Session::get('user_id');
+        $title = $rq->title;
+        $content = $rq->content;
+        $category_id = $rq->category_id;
+        Post::create([
+            'title' => $title,
+            'content' => $content,
+            'created_by' => $user_id,
+            'category_id' => $category_id,
+        ]); 
 
     	return redirect()->route("$this->table.view_all")->with("success", "Thêm post thành công");
     }

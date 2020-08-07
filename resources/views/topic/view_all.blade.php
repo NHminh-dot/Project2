@@ -1,7 +1,6 @@
 @extends('welcome')
 
 @section('content')
-	
 <a href="{{ route('topic.view_insert') }}">
 	New Topic
 </a>

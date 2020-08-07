@@ -54,13 +54,17 @@ class UserController extends Controller
     	User::find($id)->delete();
     	return redirect()->route("$this->table.view_all")->with("success", "Xóa user thành công");
     }
-    // public function view_self_info($id)
-    // {
-    //     $user = User::find($id);
-    //     $array_role = Role::get();
-    //     return view("$this->table.view_self_info",[
-    //         "user" => $user,
-    //         "array_role" => $array_role,
-    //     ]);
-    // }
+    public function view_self_info($id)
+    {
+        // $user = User::find($id);
+        // $array_role = Role::get();
+        // return view("$this->table.view_self_info",[
+        //     "user" => $user,
+        //     "array_role" => $array_role,
+        // ]);
+        $user = User::find($id);
+        return view("$this->table.view_self_info",[
+            "user" => $user,
+        ]);
+    }
 }

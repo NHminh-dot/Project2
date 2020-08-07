@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Topic;
+use Session;
 
 
 
@@ -28,7 +29,17 @@ class CategoryController extends Controller
     }
     public function process_insert(Request $rq)
     {
-    	Category::create($rq->all());
+    	// Category::create($rq->all());
+        $user_id = Session::get('user_id');
+        $name = $rq->name;
+        $description = $rq->description;
+        $topic_id = $rq->topic_id;
+        Category::create([
+            'name' => $name,
+            'description' => $description,
+            'created_by' => $user_id,
+            'topic_id' => $topic_id,
+        ]);
 
     	return redirect()->route("$this->table.view_all")->with("success", "Thêm category thành công");
     }

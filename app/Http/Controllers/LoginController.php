@@ -21,7 +21,7 @@ class LoginController //extends Controller
     		$user = User::where('login_name', $rq->login_name)
     		->where('password', $rq->password)
     		->firstOrFail();
-        
+
     		Session::put('user_id',$user->id);
     		Session::put('username',$user->username);
 

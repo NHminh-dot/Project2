@@ -24,7 +24,7 @@
 		{{-- <th>EDIT</th> --}}
 		{{-- <th>DELETE</th> --}}
 	</tr>
-	@foreach ($array_user as $user)
+	@foreach ($user as $user)
 		<tr style="text-align: center;">
 			{{-- <td>
 				{{ $user->id }}

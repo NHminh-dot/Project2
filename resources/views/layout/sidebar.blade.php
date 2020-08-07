@@ -25,6 +25,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('post.view_all')}}"><i class="fa fa-fw fa-rocket"></i>Post</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('comment.view_all')}}"><i class="fa fa-fw fa-rocket"></i>Comment</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>

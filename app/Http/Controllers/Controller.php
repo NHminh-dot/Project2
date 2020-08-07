@@ -31,4 +31,17 @@ class Controller
     {
         return view('index');
     }
+    public function reddit()
+    {
+        return view('reddit');
+    }
+    public function view_self_info($id)
+    {
+        $user = User::find($id);
+        $array_user = User::where('id','=',$id)->get();
+        return view("view_self_info",[
+            "user" => $user,
+            "array_user" => $array_user,
+        ]);
+    }
 }
