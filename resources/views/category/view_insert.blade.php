@@ -1,3 +1,7 @@
+@extends('welcome')
+
+@section('content')	
+
 <form action="{{ route('category.process_insert') }}" method="post">
 	{{ csrf_field() }}
 	Name category:
@@ -16,3 +20,4 @@
 	<br>
 	<button>Create</button>
 </form>
+@endsection

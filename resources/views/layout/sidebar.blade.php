@@ -11,19 +11,19 @@
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="{{route('role.view_all')}}"><i class="fa fa-fw fa-user-circle"></i>Role</a>         
+                                <a class="nav-link" href="{{route('role.view_all')}}"><i class="far fa-id-badge"></i>Role</a>         
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('user.view_all')}}"><i class="fa fa-fw fa-rocket"></i>User</a>
+                                <a class="nav-link" href="{{route('user.view_all')}}"><i class="far fa-user"></i>User</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('topic.view_all')}}"><i class="fa fa-fw fa-rocket"></i>Topic</a>
+                                <a class="nav-link" href="{{route('topic.view_all')}}"><i class="fas fa-stream"></i>Topic</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('category.view_all')}}"><i class="fa fa-fw fa-rocket"></i>Category</a>
+                                <a class="nav-link" href="{{route('category.view_all')}}"><i class="far fa-sticky-note"></i>Category</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('post.view_all')}}"><i class="fa fa-fw fa-rocket"></i>Post</a>
+                                <a class="nav-link" href="{{route('post.view_all')}}"><i class="far fa-clipboard"></i>Post</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('comment.view_all')}}"><i class="fa fa-fw fa-rocket"></i>Comment</a>

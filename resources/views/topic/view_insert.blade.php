@@ -10,6 +10,5 @@
 	<input type="text" name="description">
 	<br>
 	<button>Create</button>
-	{{ Session::get('username') }}
 </form>
 @endsection

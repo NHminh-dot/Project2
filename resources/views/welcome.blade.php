@@ -16,8 +16,6 @@
 		</li>
 	</ul>
 </div> --}}
-=======
-<!doctype html>
 <html lang="en">
  
 <head>
@@ -77,5 +75,5 @@
     <script src="{{ asset('js/C3chartjs.js') }}"></script>
     <script src="{{ asset('js/dashboard-ecommerce.js') }}"></script> --}}
 </body>
- 
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </html>

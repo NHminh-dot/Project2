@@ -1,3 +1,6 @@
+@extends('welcome')
+
+@section('content')
 <form action="{{ route('topic.process_update',['id' => $topic->id]) }}" method="post">
 	{{ csrf_field() }}
 	Id topic:
@@ -17,3 +20,4 @@
 	<br>
 	<button>Update</button>
 </form>
+@endsection
