@@ -10,7 +10,7 @@
 </head>
 <body>
 	<table border="1" width="100%">
-	<tr>
+	<tr style="text-align: center;">
 		{{-- <th>ID</th> --}}
 		<th>USERNAME</th>
 		{{-- <th>LOGIN NAME</th> --}}
@@ -54,8 +54,8 @@
 				</div>
 			</td>
 			<td>
-				<img src="{{ $user->picture }}">
-				{{-- <img src="{{ asset('storage/photo/$user->picture') }}"> --}}
+				{{-- <img src="{{ $user->picture }}"> --}}
+				<img style="max-width: 200px;" src="{{ asset("storage/$user->picture") }}">
 			</td>
 			<td>
 				{{-- {{ $user->gender }} --}}

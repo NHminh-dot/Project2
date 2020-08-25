@@ -13,7 +13,7 @@ class TopicController extends Controller
     protected $table = "topic";
     public function view_all()
     {
-    	$array_topic = Topic::with("user")->paginate(10);//->orderBy('created_at','desc');
+    	$array_topic = Topic::with("user")->get();//->orderBy('created_at','desc');
         // $user = User::find($id)
 
     	return view("$this->table.view_all",[

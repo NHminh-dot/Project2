@@ -27,6 +27,12 @@ class Post extends Model
     }
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        // return $this->hasMany(Comment::class);
+        return $this->hasMany('App\Models\Comment');
+    }
+    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
+    public function getSomeDateAttribute($date)
+    {
+        return $date->format('m-d');
     }
 }

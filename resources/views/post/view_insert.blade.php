@@ -7,7 +7,8 @@
 	<input type="text" name="title">
 	<br>
 	Content:
-	<input type="text" name="content">
+	{{-- <input type="text" name="content"> --}}
+	<textarea name="content"></textarea>
 	<br>
 	Category:
 	<select name="category_id">

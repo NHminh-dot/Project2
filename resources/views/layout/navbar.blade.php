@@ -59,15 +59,20 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown nav-user">
-                    <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('storage/photo/male_avatar.png') }}" alt="" class="user-avatar-md rounded-circle"></a>
-                    <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
-                        @if (Session::has('user_id'))
-                        <div class="nav-user-info">
-                            <h5 class="mb-0 text-white nav-user-name">{{ Session::get('username') }}</h5>
-                            <span class="status"></span><span class="ml-2">Available</span>
-                        </div>
-                            {{ $user = Session::get('user_id') }}
-                        @endif
+                    @if (Session::has('user_id'))
+                    <span style="display: none;">
+                        {{ $user = Session::get('user_id') }}
+                    </span>
+                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{-- <img src="{{ asset("storage/$user->picture") }}" alt="" class="user-avatar-md rounded-circle"> --}}
+                            <img src="{{ Session::get('picture') }}" alt="" class="user-avatar-md rounded-circle">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                            <div class="nav-user-info">
+                                <h5 class="mb-0 text-white nav-user-name">{{ Session::get('username') }}</h5>
+                                <span class="status"></span><span class="ml-2">Available</span>
+                            </div>
+                    @endif
                         <a class="dropdown-item" href="{{ route('view_self_info',['id' => $user]) }}"><i class="fas fa-user mr-2"></i>Account</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-power-off mr-2"></i>Logout</a>

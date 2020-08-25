@@ -62,7 +62,7 @@
 			</td>
 			<td>
 				{{-- <img src="{{ $user->picture }}"> --}}
-				<img src="{{ asset('storage/photo/$user->picture') }}">
+				<img style="max-width: 150px;" src="{{ asset("storage/$user->picture") }}">
 			</td>
 			<td>
 				{{-- {{ $user->gender }} --}}

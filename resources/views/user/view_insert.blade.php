@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('user.process_insert') }}" method="post" enctype="multipart\form-data">
+<form action="{{ route('user.process_insert') }}" method="post" enctype="multipart/form-data">
 	{{ csrf_field() }}
 	Username:
 	<input type="text" name="username">
@@ -26,9 +26,18 @@
 	<input type="file" name="picture" accept="image/*">
 	<br>
 	Gender:
-	<input type="radio" name="gender" value="0">Female
-	<input type="radio" name="gender" value="1">Male
-	<input type="radio" name="gender" value="2">Other
+	<label class="custom-control custom-radio custom-control-inline">
+		<input type="radio" name="gender" value="0" class="custom-control-input">
+			<span class="custom-control-label">Female</span>
+	</label>
+	<label class="custom-control custom-radio custom-control-inline">
+		<input type="radio" name="gender" value="1" class="custom-control-input">
+			<span class="custom-control-label">Male</span>
+	</label>
+	<label class="custom-control custom-radio custom-control-inline">
+		<input type="radio" name="gender" value="2" class="custom-control-input">
+			<span class="custom-control-label">Other</span>
+	</label>
 	<br>
 	Role:
 	<select name="role_id">

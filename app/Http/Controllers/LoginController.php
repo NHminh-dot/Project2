@@ -24,6 +24,7 @@ class LoginController //extends Controller
 
     		Session::put('user_id',$user->id);
     		Session::put('username',$user->username);
+            Session::put('picture', $user->picture);
 
     		return redirect()->route('welcome')->with('success', 'Đăng nhập thành công');
     	} catch (Exception $e) {

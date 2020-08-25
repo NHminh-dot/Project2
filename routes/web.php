@@ -1,12 +1,13 @@
 <?php 
 
 Route::get('index','Controller@index');
-Route::get('reddit','Controller@reddit');
+Route::get('view_all_test', 'Controller@view_all_test')->name('view_all_test');
 Route::get('test','Controller@test');
 Route::get('show','Controller@show');
 Route::post('post_test','Controller@post_test')->name('post_test');
+Route::get('','Controller@reddit');
 
-Route::get('','LoginController@view_login')->name('view_login');
+Route::get('admin','LoginController@view_login')->name('view_login');
 Route::post('process_login','LoginController@process_login')->name('process_login');
 
 Route::group(['middleware' => 'CheckUser'], function() {

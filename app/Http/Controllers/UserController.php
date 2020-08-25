@@ -30,8 +30,12 @@ class UserController extends Controller
     }
     public function process_insert(Request $rq)
     {
-        Storage::disk('public')->put('photo',$rq->picture);
-    	User::create($rq->all());
+        // Storage::disk('public')->put('photo',$rq->picture);
+    	$user = User::create($rq->all());
+        if ($rq->has('picture')) {
+            $user->update(['picture' => $rq->file('picture')->store('photo','public')]);
+        }
+        // dd($user);
     	return redirect()->route("$this->table.view_all")->with("success", "Thêm user thành công");
     }
     public function view_update($id)
@@ -45,8 +49,12 @@ class UserController extends Controller
     }
     public function process_update($id, Request $rq)
     {
+        // if ($rq->has('new_picture')) {
+        //     Storage::disk('public')->put('photo',$rq->new_picture);
+        // }
+        // $user = User::find($id);
+        // Storage::disk('public')->put('photo',$rq->new_picture);
     	User::find($id)->update($rq->all());
-
     	return redirect()->route("$this->table.view_all")->with("success", "Sửa user thành công");
     }
     public function delete($id)
@@ -67,4 +75,8 @@ class UserController extends Controller
             "user" => $user,
         ]);
     }
+    // public function updatePhoto($id, Request $rq)
+    // {
+    //     Controller::updatePicture();
+    // }
 }
