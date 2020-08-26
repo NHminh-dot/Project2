@@ -12,7 +12,7 @@ use Session;
 
 class CategoryController extends Controller
 {
-    protected $table = "category";
+    protected $table = "admin.category";
     public function view_all()
     {
     	$array_category = Category::with("topic")->paginate(10);

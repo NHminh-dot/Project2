@@ -122,37 +122,33 @@
 	.post-content{
 		padding-top: 5px;
 	}
+	.pagination{
+		position: absolute;
+		left: 5%;
+		padding-top: 5px;
+		float: left;
+		list-style-type: none;
+	}
+	.pagination li{
+		position: relative;
+		float: left;
+		border-right: 1px solid #ffffff;
+		text-align: center;
+	}
+	.pagination li a{
+		padding: 10px;
+		color: white;
+	}
 </style>
 <body>
 	<div class="global">
-		<div class="header">
-			<div class="nav-bar">
-				<div class="nav-bar-logo">
-					<img src="{{ asset('storage/photo/logo.png') }}" width="100px">
-				</div>
-				<div class="nav-bar-search">
-					<input id="search" type="search" name="search" placeholder="Search...">
-				</div>
-				<div class="nav-bar-login-signUp-logout">
-					@if (!Session::has('user'))
-						{{-- <input id="button" class="login" type="button" name="login" value="log in"> --}}
-						<a href="#" id="button" class="login" name="login">log in</a>
-						{{-- <input id="button" class="sign_up" type="button" name="sign_up" value="sign up"> --}}
-						<a href="#" id="button" class="sign_up" name="sign_up" >sign up</a>
-					@elseif (Session::has('user'))
-						<input id="button" type="button" name="logout" value="logout">
-					@endif		
-				</div>
-				<div class="view-option">
-					
-				</div>
-			</div>
-		</div>
+		@include('layoutuser/header', ['some' => 'data'])
 		<div class="container">
 			<div class="ListingLayout-backgoundContainer" style="background: #DAE0E6;">
 				<div class="listPostContainer">
 					@foreach ($array_post as $post)
 						<div class="Posts">
+							<a href="{{ route('comments',['title' => $post->title]) }}">
 							<div class="" style="float: left; width: 40px; border-left: 4px solid transparent">
 								<form action="">
 									<div class="vote-arrow">
@@ -205,14 +201,16 @@
 									{{ $post->content }}
 								</div>
 								<div class="post-comment">
-									{{-- @foreach ($array_comment as $comment)
-										{{ $comment::having('post_id')->count() }}
-									@endforeach --}}
+									<i class='fas fa-comment-alt'></i>
 									{{ $post->comments->count() }}
 								</div>
 							</div>
+							</a>
 						</div>
 					@endforeach
+				</div>
+				<div style="position: relative; background-color: #666; width: 100%; height: 37px;">
+					{{ $array_post->links() }}
 				</div>
 			</div>
 		</div>

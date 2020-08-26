@@ -11,7 +11,7 @@ use Session;
 
 class PostController extends Controller
 {
-    protected $table = "post";
+    protected $table = "admin.post";
     public function view_all()
     {
     	$array_post = Post::with("category")->paginate(10);

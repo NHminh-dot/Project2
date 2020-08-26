@@ -14,11 +14,11 @@ class Controller
 {
     public function welcome()
     {
-    	return view('welcome');
+    	return view("admin.welcome");
     }
     public function test()
     {
-    	return view('test');
+    	return view("test");
     }
     public function post_test(Request $request)
     {
@@ -45,17 +45,26 @@ class Controller
         $array_post = Post::with("user")->paginate(20);
         // $array_comment = Comment::with("post")->get();
         // $comments = Post::find('id')->comments;
-        return view('reddit',[
+        return view("reddit",[
             "array_post" => $array_post,
             // "comments" => $comments,
             // "array_comment" => $array_comment,
+        ]);
+    }
+    public function comments($title)
+    {
+        $post_title = Post::find($title);
+        $array_post = Post::where('title',$title)->get();
+        return view("comments",[
+            "post_title" => $post_title,
+            "array_post" => $array_post,
         ]);
     }
     public function view_self_info($id)
     {
         $user = User::find($id);
         $array_user = User::where('id','=',$id)->get();
-        return view("view_self_info",[
+        return view("admin.view_self_info",[
             "user" => $user,
             "array_user" => $array_user,
         ]);

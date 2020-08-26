@@ -10,7 +10,7 @@ use Storage;
 
 class UserController extends Controller
 {
-    protected $table = 'user';
+    protected $table = 'admin.user';
     public function view_all(Request $rq)
     {
         $search_username = $rq->search_username;

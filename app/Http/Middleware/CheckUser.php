@@ -20,7 +20,7 @@ class CheckUser
             return $next($request);
         }
         else{
-            return redirect()->route('view_login')->with('error','Mày chưa đăng nhập');
+            return redirect()->route('login')->with('error','Mày chưa đăng nhập');
         }
     }
 

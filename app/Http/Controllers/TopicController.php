@@ -10,7 +10,7 @@ use Session;
 
 class TopicController extends Controller
 {
-    protected $table = "topic";
+    protected $table = "admin.topic";
     public function view_all()
     {
     	$array_topic = Topic::with("user")->get();//->orderBy('created_at','desc');

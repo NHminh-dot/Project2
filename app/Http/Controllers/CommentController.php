@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\User;
 use App\Models\Post;
 use Session;
 
 class CommentController extends Controller
 {
-    protected $table = "comment";
+    protected $table = "admin.comment";
     public function view_all()
     {
     	$array_comment = Comment::with("post")->paginate(30);
@@ -41,12 +42,12 @@ class CommentController extends Controller
     public function view_update($id)
     {
     	$comment = Comment::find($id);
-        $array_category = Category::get();
+        $array_post = Post::get();
         $array_user = User::get();
         // dd($array_user);
     	return view("$this->table.view_update", [
             "comment" => $comment,
-            "array_category" => $array_category,
+            "array_post" => $array_post,
             "array_user" => $array_user,
         ]);
        
