@@ -21,7 +21,6 @@ class Comment extends Migration
             $table->integer('status')->default(1);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
             $table->foreign('post_id')->references('id')->on('post');
             $table->foreign('created_by')->references('id')->on('user');
         });

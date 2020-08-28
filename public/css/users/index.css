@@ -1,0 +1,78 @@
+*{
+    margin:0;
+    padding:0;
+}
+.all {
+    height: auto;
+
+    border-bottom: black solid;
+}
+    .body{
+        width:90%;
+        height:100%;
+        margin:auto;
+        background-color:white;
+        padding-top: 50px;
+    }
+    .post-list{
+        margin-left: auto;
+        margin-right: auto;
+        height: 90%;
+        width: 90%;
+        background-color: #19BEFF;
+        padding-top: 20px;
+    }
+        .post{
+            height: 100px;
+            background-color: white;
+            width: 90%;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 20px;
+           
+        }
+            .vote{
+                width: 7%;
+                float: left;
+                height: 100%;
+                position: relative;;
+            }
+                .vote-arrow{
+                    height: 70%;
+                    width: 50%;
+                    margin:auto;
+                    margin-top: 15%;
+                    align-items: center;
+                }
+            .text-info{
+                width: 93%;
+                float: left;
+                height: 100%;
+            }
+                .category{
+                    height: 25%;
+                    width: 100%;
+                }
+                .title{
+                    height: 25%;
+                    width: 100%;
+                }
+                .author{
+                    height: 25%;
+                    width: 100%;
+                }
+                .comment{
+                    height: 25%;
+                    width: 100%;
+                }
+.pagination ul{
+    list-style-type: none;
+}
+a:link{
+text-decoration: none;
+color: black;
+}
+a:visited{
+    color: black;
+}
+

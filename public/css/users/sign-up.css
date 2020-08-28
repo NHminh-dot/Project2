@@ -1,0 +1,24 @@
+.form-input{
+	display: block;
+	width: 100%;
+	border: solid 1px #01b7ff;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.input-container > label{
+	font-size: 24px;
+	font-weight: bold;
+}
+.input-container > span{
+	font-size: 18px;
+}
+.button-container > button{
+	margin: auto;
+	text-align: center;
+	padding: 10px;
+	font-size: 18px;
+}
+.button-container{
+	text-align: center;
+}

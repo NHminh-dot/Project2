@@ -16,9 +16,10 @@ class Controller
     {
     	return view("admin.welcome");
     }
-    public function test()
+    public function topic()
     {
-    	return view("test");
+        return view("topic");
+
     }
     public function post_test(Request $request)
     {
@@ -90,5 +91,9 @@ class Controller
             "search_username" => $search_username,
         ]); 
         // return view('user.view_all_test');
+    }
+    public function sign_up()
+    {
+        return view('sign_up');
     }
 }

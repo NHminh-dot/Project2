@@ -14,11 +14,11 @@ class ReportedPost extends Migration
     public function up()
     {
         Schema::create('reported_post', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('create_by')->unsigned();
             $table->integer('post_id')->unsigned();
             $table->timestamp('created_at');
             $table->text('description');
+            $table->primary(['create_by','post_id']);
             $table->foreign('create_by')->references('id')->on('user');
             $table->foreign('post_id')->references('id')->on('post');
             //
