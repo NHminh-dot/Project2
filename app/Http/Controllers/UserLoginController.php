@@ -16,9 +16,15 @@ class UserLoginController //extends Controller
     }
     public function process_login(Request $rq)
     {
+        // dd($rq);
+         // $user = User::where('login_name', $rq->username)
+         // ->where('password', $rq->password)
+         // ->first();
+         // dd($user);
+
     	try {
-    		$user = User::where('login_name', $rq->login_name)
-    		->where('password', $rq->password)
+    		$user = $user = User::where('login_name', $rq->username)
+         ->where('password', $rq->password)
     		->firstOrFail();
 
     		Session::put('user_id',$user->id);

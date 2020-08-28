@@ -14,11 +14,11 @@ class ReportedComment extends Migration
     public function up()
     {
         Schema::create('reported_comment', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('create_by')->unsigned();
             $table->integer('comment_id')->unsigned();
             $table->timestamp('created_at');
             $table->text('description');
+            $table->primary(['create_by','comment_id']);
             $table->foreign('create_by')->references('id')->on('user');
             $table->foreign('comment_id')->references('id')->on('comment');
             //
