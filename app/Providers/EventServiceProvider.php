@@ -32,4 +32,7 @@ class EventServiceProvider extends ServiceProvider
 
         //
     }
+    // protected $subcribe = [
+    //     'App\Listeners\UserEventSubcriber',
+    // ];
 }

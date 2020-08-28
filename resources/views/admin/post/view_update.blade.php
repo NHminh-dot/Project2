@@ -16,7 +16,7 @@
 	<input type="text" readonly="readonly" name="created_at" value="{{ $post->created_at }}">
 	<br>
 	Created by:
-	<input type="text" readonly="readonly" name="created_by" value="{{ $post->user->username }}">
+	<input type="text" readonly="readonly" name="created_by" value="{{ $post->created_by }}">
 	<br>
 	Category:
 	<select name="category_id">

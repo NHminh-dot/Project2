@@ -13,7 +13,7 @@ class CommentController extends Controller
     protected $table = "admin.comment";
     public function view_all()
     {
-    	$array_comment = Comment::with("post")->paginate(30);
+    	$array_comment = Comment::with("post")->get();
     	return view("$this->table.view_all", [
     		"array_comment" => $array_comment
     	]);
@@ -63,5 +63,19 @@ class CommentController extends Controller
         Comment::find($id)->delete();
 
         return redirect()->route("$this->table.view_all")->with("success", "Xóa comment thành công");
+    }
+    public function comment_process_insert($id, Request $rq)
+    {
+        $post = Post::find($id);
+        $content = $rq->content;
+        $user_id = Session::get('user_id');
+        $comment = $post->comments()->create([
+            'content' => $content,
+            'created_by' => $user_id,
+            // 'post_id' => $post_id,
+        ]);
+        // dd($comment);
+
+        return redirect()->route("comments",['id' => $post->id]);
     }
 }

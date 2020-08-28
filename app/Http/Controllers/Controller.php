@@ -51,13 +51,17 @@ class Controller
             // "array_comment" => $array_comment,
         ]);
     }
-    public function comments($title)
+    public function comments($id)
     {
-        $post_title = Post::find($title);
-        $array_post = Post::where('title',$title)->get();
+        $post_id = Post::find($id);
+        // $array_post = Post::where('id',$id)->get();
+        $array_post2 = Post::where('id',$id)->with("comments")->get();
+        // dd($array_post2);
         return view("comments",[
-            "post_title" => $post_title,
-            "array_post" => $array_post,
+            "post_id" => $post_id,
+            // "array_post" => $array_post,
+            "array_post2" => $array_post2
+            // "array_comment" => $array_comment,
         ]);
     }
     public function view_self_info($id)

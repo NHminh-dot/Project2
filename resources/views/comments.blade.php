@@ -16,7 +16,7 @@
 	.global{
 		width: 100%;
 		height: auto;
-		background-color: green;
+		/*background-color: green;*/
 	}
 	.header{
 		width: 100%;
@@ -79,8 +79,8 @@
 	 	width: 100%;
 	}
 	.listPostContainer{
-		max-width: 65%;
-		background-color: cyan;
+		max-width: 50%;
+		/*background-color: cyan;*/
 		position: relative;
 		left: 20%;
 	}
@@ -88,8 +88,8 @@
 		/*display: block;*/
 		display: flex;
 		flex-direction: inline-column;
-		width: 600px;
-		background-color: yellow;
+		width: 90%;
+		/*background-color: yellow;*/
 		padding-top: 8px;
 		margin: 20px;
 		border: 1px solid #666;
@@ -105,7 +105,7 @@
 	.post-information a{
 		text-decoration: none;
 	}
-	.post-follow{
+	/*.post-follow{
 		color: #fff;
 		padding: 5px;
 		background-color: #3030FE;
@@ -114,7 +114,7 @@
 		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 		border-radius: 6px;
 		float: right;
-	}
+	}*/
 	.post-title{
 		font-weight: bold;
 		font-size: 20px;
@@ -123,6 +123,48 @@
 		padding-top: 5px;
 		padding-bottom: 10px;
 	}
+	.Comments{
+		display: flex;
+		flex-direction: inline-column;
+		width: 90%;
+		/*background-color: yellow;*/
+		padding-top: 8px;
+		margin: 20px;
+		border: 1px solid #666;
+		border-radius: 5px;
+	}
+	.comment-information{
+		display: flex;
+		flex: 1 1 auto;
+		width: 450px
+		border-left: 1px solid #666;
+	}
+	.comment-information a{
+		text-decoration: none;
+	}
+	/*.comment-content{
+		margin: 10px;
+	}*/
+	.comment-content p{
+		padding-bottom: 5px;
+	}
+	.comment-button{
+		text-decoration: none; 
+		color: white; 
+		background-color: red; 
+		text-transform: uppercase; 
+		padding: 5px 10px; 
+		border-radius: 5px;
+		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+		font-weight: bold;
+		font-size: 13px;
+	}
+	.comment-button:hover{
+		background-color: #DF9F9F;
+	}
+	.comment-button:active{
+		background-color: #7D3939;
+	}
 </style>
 <body>
 	<div class="global">
@@ -130,9 +172,8 @@
 		<div class="container">
 			<div class="ListingLayout-backgoundContainer" style="background: #DAE0E6;">
 				<div class="listPostContainer">
-					@foreach ($array_post as $post)
+					@foreach ($array_post2 as $post)
 						<div class="Posts">
-							<a href="{{ route('comments',['title' => $post->title]) }}">
 							<div class="" style="float: left; width: 40px; border-left: 4px solid transparent">
 								<form action="">
 									<div class="vote-arrow">
@@ -176,7 +217,7 @@
 										{{-- <hr>
 										{{ $post->created_at->toDateString() }} --}}
 									</div>
-									<button class="post-follow">follow</button>
+									{{-- <button class="post-follow">follow</button> --}}
 								</div>
 								<div class="post-title">
 									{{ $post->title }}
@@ -189,7 +230,67 @@
 									{{ $post->comments->count() }} Comments
 								</div>
 							</div>
-							</a>
+						</div>
+						{{-- Phan comment --}}
+						<div style="width: 90%; margin: 20px;">
+							<div>
+								<p style="margin-bottom: 5px; font-size: 14px;">
+									Comment as <a href="#" style="text-decoration: none; color: red;">{{ Session::get('username') }}</a>
+								</p>
+							</div>
+							<form action="{{ route('comment_process_insert',['id' => $post->id]) }}" method="post">
+								{{ csrf_field() }}
+							<textarea id="comment" name="content"></textarea>
+								<div>
+									{{-- <a class="" href="#">comment</a> --}}
+									<button class="comment-button">comment</button>
+								</div>
+							</form>
+						</div>
+						<div class="post-list-comment">
+							@foreach ($post_id->comments as $comment)
+							<div class="Comments">
+								<div class="" style="float: left; max-width: 40px; border-left: 4px solid transparent">
+									<div class="vote-arrow">
+										<button class="voteButton">
+											<span>
+												<img style="max-width: 10px" src="{{ asset('storage/photo/upvote-512.png') }}">	
+											</span>
+										</button>
+										<div>
+											0
+										</div>
+										<button class="voteButton">
+											<span>
+												<img style="max-width: 10px" src="{{ asset('storage/photo/downvote-512.png') }}">	
+											</span>
+										</button>
+									</div>
+								</div>
+								<div class="" style="float: left; margin-left: 5px;">
+									<div style="display: flex; flex-direction: row;">
+										<div class="comment-information">
+											<div class="comment-username">
+												<a href="#" style="color: #000">
+													{{ $comment->user->username }}
+												</a>
+											</div>
+											<span style="font-weight: 1000">&nbsp.&nbsp</span>
+											<div>
+												<a href="#" style="color: rgb(120, 124, 126);">
+													{{-- {{ $post->user->username }} --}}
+													&nbsp{{ $comment->created_at->diffForHumans() }}
+												</a>
+											</div>
+										</div>
+									</div>
+									<div id="comment-content">
+										{{ $comment->content }}
+										{{-- {{ $post_id->comments()->get(['content']) }} --}}
+									</div>
+								</div>
+							</div>
+							@endforeach
 						</div>
 					@endforeach
 				</div>
@@ -197,5 +298,13 @@
 		</div>
 	</div>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>	
+<script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script type="text/javascript">
+	CKEDITOR.replace('comment');
+</script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	document.getElementById("comment-content").innerHTML = "{{ $comment->content }}"
+</script> --}}
 </body>
 </html>

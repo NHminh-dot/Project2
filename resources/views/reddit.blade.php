@@ -16,7 +16,7 @@
 	.global{
 		width: 100%;
 		height: auto;
-		background-color: green;
+		/*background-color: green;*/
 	}
 	.header{
 		width: 100%;
@@ -84,6 +84,32 @@
 		position: relative;
 		left: 20%;
 	}
+	.Create-post{
+		display: flex;
+		flex-direction: row;
+		width: 600px;
+		height: 55px;
+		background-color: #fff;
+		margin: 20px;
+		border: 1px solid #666;
+		border-radius: 5px;
+	}
+	.create-post_avatar-user{
+		max-width: 40px;
+		text-align: center;
+		margin: 11px 5px;
+	}
+	.create-post_avatar-user img{
+		/*margin-top: 5px;*/
+	}
+	.create-post_input{
+		margin: 10px 0px;
+		width: 100%;
+	}
+	.create-post_input input{
+		width: 90%;
+		height: 30px;
+	}
 	.Posts{
 		/*display: block;*/
 		display: flex;
@@ -101,6 +127,10 @@
 		/*flex-direction: row;*/
 		/*float: left;*/
 		width: 450px
+	}
+	.avatar{
+		border-radius: 50%;
+		padding:  0 5px;
 	}
 	.post-information a{
 		text-decoration: none;
@@ -146,65 +176,79 @@
 		<div class="container">
 			<div class="ListingLayout-backgoundContainer" style="background: #DAE0E6;">
 				<div class="listPostContainer">
+					@if (Session::has('user_id'))
+					<div class="Create-post">
+						<div class="create-post_avatar-user">
+							<a href="#">
+								<img class="avatar" style="max-width: 30px;" src="{{ Session::get('picture') }}">
+							</a>
+						</div>
+						<div class="create-post_input">
+							<a href="{{ route('submit') }}"><input type="text" name="" placeholder="&nbsp Create Post"></a>
+						</div>
+					</div>
+					@endif
 					@foreach ($array_post as $post)
 						<div class="Posts">
-							<a href="{{ route('comments',['title' => $post->title]) }}">
-							<div class="" style="float: left; width: 40px; border-left: 4px solid transparent">
-								<form action="">
-									<div class="vote-arrow">
-										<button class="voteButton">
-											<span>
-												<img style="max-width: 10px" src="{{ asset('storage/photo/upvote-512.png') }}">	
-											</span>
-										</button>
-										<div>
-											{{ $post->up_vote - $post->down_vote }}
+							<a href="{{ route('comments',['id' => $post->id]) }}">
+								<div class="" style="float: left; width: 40px; border-left: 4px solid transparent">
+									<form action="">
+										<div class="vote-arrow">
+											<button class="voteButton">
+												<span>
+													<img style="max-width: 10px" src="{{ asset('storage/photo/upvote-512.png') }}">	
+												</span>
+											</button>
+											<div>
+												{{ $post->up_vote - $post->down_vote }}
+											</div>
+											<button class="voteButton">
+												<span>
+													<img style="max-width: 10px" src="{{ asset('storage/photo/downvote-512.png') }}">	
+												</span>
+											</button>
 										</div>
-										<button class="voteButton">
-											<span>
-												<img style="max-width: 10px" src="{{ asset('storage/photo/downvote-512.png') }}">	
-											</span>
-										</button>
+									</form>
+								</div>
+								<div class="" style="float: left; ">
+									<div style="display: flex; flex-direction: row;">
+										<div class="post-user-avatar">
+											<a href="#">
+												<img class="avatar" src="{{ $post->user->picture }}" style="max-width: 20px;">
+											</a>
+										</div>
+										<div class="post-information">
+											<div class="post-category">
+												<a href="#" style="color: #000">
+													{{ $post->category->name }}
+												</a>
+											</div>
+											<span style="font-weight: 1000">&nbsp.&nbsp</span>
+											<span>Posted by&nbsp</span>
+											<div>
+												<a href="#" style="color: rgb(120, 124, 126);">
+													{{ $post->user->username }}
+												</a>
+											</div>
+											&nbsp{{ $post->created_at->diffForHumans() }}
+											{{-- <hr>
+											{{ $post->created_at->toDateString() }} --}}
+										</div>
+										<button class="post-follow">follow</button>
 									</div>
-								</form>
-							</div>
-							<div class="" style="float: left; ">
-								<div style="display: flex; flex-direction: row;">
-									<div class="post-user-avatar">
-										<a href="#">
-											<img src="{{ $post->user->picture }}" style="max-width: 20px;">
+									<div class="post-title">
+										<a style="text-decoration: none; color: black; margin" href="{{ route('comments',['id' => $post->id]) }}">
+											{{ $post->title }}
 										</a>
 									</div>
-									<div class="post-information">
-										<div class="post-category">
-											<a href="#" style="color: #000">
-												{{ $post->category->name }}
-											</a>
-										</div>
-										<span style="font-weight: 1000">&nbsp.&nbsp</span>
-										<span>Posted by&nbsp</span>
-										<div>
-											<a href="#" style="color: rgb(120, 124, 126);">
-												{{ $post->user->username }}
-											</a>
-										</div>
-										&nbsp{{ $post->created_at->diffForHumans() }}
-										{{-- <hr>
-										{{ $post->created_at->toDateString() }} --}}
+									<div class="post-content">
+										{{ $post->content }}
 									</div>
-									<button class="post-follow">follow</button>
+									<div class="post-comment">
+										<i class='fas fa-comment-alt'></i>
+										{{ $post->comments->count() }} Comments
+									</div>
 								</div>
-								<div class="post-title">
-									{{ $post->title }}
-								</div>
-								<div class="post-content">
-									{{ $post->content }}
-								</div>
-								<div class="post-comment">
-									<i class='fas fa-comment-alt'></i>
-									{{ $post->comments->count() }}
-								</div>
-							</div>
 							</a>
 						</div>
 					@endforeach
@@ -215,5 +259,6 @@
 			</div>
 		</div>
 	</div>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </body>
 </html>
