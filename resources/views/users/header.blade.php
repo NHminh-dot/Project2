@@ -20,7 +20,17 @@
                     </div>
                 </div>
                 <div class="header__user">
-                    <div class="header__user-btn" data-dropdown-btn="user">
+                    <div class="header__menu">
+                        <div class="header__menu-btn">
+                            <a href="">Login</a>
+                        </div>
+                    </div>
+                    <div class="header__user">
+                        <div class="header__user-btn">
+                            <a href="">Sign Up</a>
+                        </div>
+                    </div>
+                    {{-- <div class="header__user-btn" data-dropdown-btn="user">
                         <img src="{{asset('fonts/icons/avatars/A.svg')}}" alt="avatar">
                         azyrusmax<i class="icon-Arrow_Below"></i>
                     </div>
@@ -40,7 +50,7 @@
                                 <li><a href="#">Likes</a></li>                            
                             </ul>
                         </div>
-                    </nav>
+                    </nav> --}}
                 </div>
             </div>
             <div class="header__offset-btn">
