@@ -48,6 +48,25 @@
 		padding: 10px;
 		color: red;
 	}
+	.topic-container{
+		border: solid 1px cyan;
+		width: 100%;
+		height: auto;
+		font-family: sans-serif;
+		font-size: 24px;
+	}
+		.topic-container a{
+			text-decoration: none;
+			color: black;
+		}
+		.topic-container a:visited{
+		color: black;
+		}
+	.category-container{
+		font-family: sans-serif;
+		font-size: 14px;
+
+	}
 </style>
 <body>
 	<div class="global">
@@ -55,11 +74,18 @@
 			<div class="ListingLayout-backgoundContainer" style="background: #DAE0E6;">
 				<div class="listPostContainer">
 					@foreach($array_topic as $topic)
-					<div>
-						{{$topic->name}};
+					<div class="topic-container">
+						<a href="">{{$topic->name}}</a>
+						<div class="category-container">
+							@foreach($array_category as $category)
+								<div class="category-name">
+									<a href="{{-- {{ route('category',['id'=>$post->category_id]) }}">{{$category->name}} --}}</a>
+								</div>
+							@endforeach
+						</div>
 					</div>
 					@endforeach
-				<div style="position: relative; background-color: #666; width: 100%; height: 37px;">
+{{-- 				<div style="position: relative; background-color: #666; width: 100%; height: 37px;"> --}}
 				</div>
 			</div>
 	</div>

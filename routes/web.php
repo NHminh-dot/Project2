@@ -14,6 +14,8 @@ Route::post('process_login','UserLoginController@process_login')->name('process_
 Route::get('sign_up','Controller@sign_up')->name('sign_up');
 Route::get('topic','TopicController@view_topic')->name('topic');
 Route::post('sign_up_process','SignUpController@sign_up_process')->name('sign_up_process');
+Route::get('user_category/{category}','TopicController@view_category')->name('user_category');
+Route::get('write_post','Controller@write_post')->name('write_post');
 /*Route user after login*/
 Route::group(['middleware' => 'CheckUser'], function() {
     Route::get('logout','UserLoginController@logout')->name('logout');

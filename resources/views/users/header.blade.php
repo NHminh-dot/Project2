@@ -1,40 +1,50 @@
-
-
-    <head>
-        <title>Header</title>
-    </head>
-    <link href="{{asset('css/users/header.css')}}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <div class="header">
-            <div class="header--logo">
-                <div class="logo">
+   <header>
+        <div class="header js-header js-dropdown">
+            <div class="container">
+                <div class="header__logo">
                     <a href="{{route('reddit')}}">
-                        <img src="{{asset('storage/LogoWibu.jpg')}}" alt="Logo"/>
+                        <img src="{{asset('storage/LogoWibu.jpg')}}" alt="logo" height="50px">
                     </a>
                 </div>
-                <div class="header--web">
-                    <button>
-                        <a href="">Topic</a>
-                    </button>
-                    <button>
-                        <a href="">Filter</a>
-                    </button>
-                </div>
-                <div class="header--search_bar">
-                    <form action="/" method="post">
-                        <input type="search" name="" me="search_bar" placeholder="Search..." />
-                        <button><i class="fa fa-search"></i></button>
+                <div class="header__search">
+                    <form action="#">
+                        <label>
+                            <i class="icon-Search js-header-search-btn-open"></i>
+                            <input type="search" placeholder="Search all forums" class="form-control">
+                        </label>
                     </form>
+                    <div class="header__search-btn">
+                        <button style="background-color: white;" >
+                            Search
+                        </button>
+                    </div>
                 </div>
-                <div class="header--user">
-                    <button>
-                        <a href="">Sign Up</a>
-                    </button>
-                    <button>Login</button>
+                <div class="header__user">
+                    <div class="header__user-btn" data-dropdown-btn="user">
+                        <img src="{{asset('fonts/icons/avatars/A.svg')}}" alt="avatar">
+                        azyrusmax<i class="icon-Arrow_Below"></i>
+                    </div>
+                    <nav class="dropdown dropdown--design-01" data-dropdown-list="user">
+                        <div>
+                            <div class="dropdown__icons">
+                                <a href="#"><i class="icon-Bookmark"></i></a>
+                                <a href="#"><i class="icon-Message"></i></a>
+                                <a href="#"><i class="icon-Preferences"></i></a>
+                                <a href="#"><i class="icon-Logout"></i></a>
+                            </div>
+                        </div>
+                        <div>
+                            <ul class="dropdown__catalog">
+                                <li><a href="#">Dashboard</a></li>
+                                <li><a href="#">Topics</a></li>
+                                <li><a href="#">Likes</a></li>                            
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
             </div>
+            <div class="header__offset-btn">
+                <a href="{{route('write_post')}}"><img src="{{asset('fonts/icons/main/New_Topic.svg')}}" alt="New Topic"></a>
+            </div>
         </div>
-
-<script src="https://kit.fontawesome.com/yourcode.js"></script>
-
+    </header>

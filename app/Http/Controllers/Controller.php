@@ -14,22 +14,20 @@ class Controller
 {
     public function welcome()
     {
-    	return view("admin.welcome");
+        return view("admin.welcome");
     }
     public function topic()
     {
         return view("topic");
-
     }
-    public function post_test(Request $request)
+    public function write_post()
     {
-    	// $file_anh = $rq->file_anh->store('photo');
-
-    	Storage::disk('public')->put('photo',$request->file_anh);
-    }
-    public function show()
-    {
-    	return view('show');
+        $array_category = Post::with("category");
+        $array_topic = Post::with("topic");
+        return view("write_post",
+        ["array_topic" => $array_topic,
+        "array_category" => $array_category,
+        ]);
     }
     public function index()
     {
@@ -52,13 +50,17 @@ class Controller
             // "array_comment" => $array_comment,
         ]);
     }
-    public function comments($title)
+    public function comments($id)
     {
-        $post_title = Post::find($title);
-        $array_post = Post::where('title',$title)->get();
+        $post_id = Post::find($id);
+        // $array_post = Post::where('id',$id)->get();
+        $array_post2 = Post::where('id',$id)->with("comments")->get();
+        // dd($array_post2);
         return view("comments",[
-            "post_title" => $post_title,
-            "array_post" => $array_post,
+            "post_id" => $post_id,
+            // "array_post" => $array_post,
+            "array_post2" => $array_post2
+            // "array_comment" => $array_comment,
         ]);
     }
     public function view_self_info($id)
