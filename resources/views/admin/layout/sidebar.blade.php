@@ -11,7 +11,7 @@
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="{{route('admin.role.view_all')}}"><i class="far fa-id-badge"></i>Role</a>         
+                                <a class="nav-link" href="{{route('admin.role.view_all')}}"><i class="far fa-id-badge"></i>Role</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('admin.user.view_all')}}"><i class="far fa-user"></i>User</a>

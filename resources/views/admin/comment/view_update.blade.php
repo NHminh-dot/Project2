@@ -13,7 +13,7 @@
 	<input type="text" readonly="readonly" name="created_at" value="{{ $comment->created_at }}">
 	<br>
 	Created by:
-	<input type="text" readonly="readonly" name="created_by" value="{{ $comment->user->username }}">
+	<input type="text" readonly="readonly" name="created_by" value="{{ $comment->created_by }}">
 	<br>
 	Post:
 	<select name="post_id">

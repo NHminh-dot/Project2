@@ -8,7 +8,7 @@
 
 /*Route user side*/
 Route::get('','Controller@reddit')->name('reddit');
-Route::get('comments/{title}','Controller@comments')->name('comments');
+Route::get('comments/{id}','Controller@comments')->name('comments');
 Route::get('login','UserLoginController@login')->name('login');
 Route::post('process_login','UserLoginController@process_login')->name('process_login');
 Route::get('sign_up','Controller@sign_up')->name('sign_up');
@@ -17,8 +17,10 @@ Route::post('sign_up_process','SignUpController@sign_up_process')->name('sign_up
 Route::get('user_category/{category}','TopicController@view_category')->name('user_category');
 Route::get('write_post','Controller@write_post')->name('write_post');
 /*Route user after login*/
-Route::group(['middleware' => 'CheckUser'], function() {
-    Route::get('logout','UserLoginController@logout')->name('logout');
+Route::group(["middleware" => "CheckUser"], function() {
+    Route::get("logout","UserLoginController@logout")->name("logout");
+    Route::get("submit","PostController@submit")->name("submit");
+    Route::post("comment_process_insert/{id}","CommentController@comment_process_insert")->name("comment_process_insert");
 });
 
 

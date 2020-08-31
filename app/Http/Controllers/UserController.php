@@ -14,7 +14,7 @@ class UserController extends Controller
     public function view_all(Request $rq)
     {
         $search_username = $rq->search_username;
-    	$array_user = User::where('username','like',"%$search_username%")->with("role")->paginate(10);
+    	$array_user = User::with("role")->get();//where('username','like',"%$search_username%")->->paginate(10);
 
     	return view("$this->table.view_all",[
     		"array_user" => $array_user,

@@ -54,7 +54,7 @@
 								<th>DELETE</th>
 							</tr>
 						</thead>	
-						</tbody>
+						<tbody>
 							@foreach ($array_topic as $topic)
 								<tr style="text-align: center;">
 									<td>
@@ -86,7 +86,7 @@
 										</a>
 									</td>
 								</tr>
-								@endforeach
+							@endforeach
 					 	</tbody>
                         <tfoot>
                             <tr>

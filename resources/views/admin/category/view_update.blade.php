@@ -17,7 +17,7 @@
 	<input type="text" readonly="readonly" name="created_at" value="{{ $category->created_at }}">
 	<br>
 	Created by:
-	<input type="text" readonly="readonly" name="created_by" value="{{ $category->user->username }}">
+	<input type="text" readonly="readonly" name="created_by" value="{{ $category->created_by }}">
 	<br>
 	Topic:
 	<select name="topic_id">

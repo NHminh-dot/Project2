@@ -14,7 +14,7 @@ class PostController extends Controller
     protected $table = "admin.post";
     public function view_all()
     {
-    	$array_post = Post::with("category")->paginate(10);
+    	$array_post = Post::with("category")->get();//->paginate(10);
     	return view("$this->table.view_all",[
     		"array_post" => $array_post
     	]);
@@ -66,5 +66,9 @@ class PostController extends Controller
         Post::find($id)->delete();
 
         return redirect()->route("$this->table.view_all")->with("success", "Xóa post thành công");
+    }
+    public function submit()
+    {
+        return view("submit");
     }
 }

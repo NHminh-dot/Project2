@@ -16,7 +16,7 @@
 	<input type="text" readonly="readonly" name="created_at" value="{{ $topic->created_at }}">
 	<br>
 	Created by:
-	<input type="text" readonly="readonly" name="created_by" value="{{ $topic->user->username }}">
+	<input type="text" readonly="readonly" name="created_by" value="{{ $topic->created_by }}">
 	<br>
 	<button>Update</button>
 </form>

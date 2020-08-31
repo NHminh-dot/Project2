@@ -27,6 +27,7 @@
 <body>
     <div class="dashboard-main-wrapper">
         @include('admin/layout/navbar')
+        
         @include('admin/layout/sidebar')
         
         <div class="dashboard-wrapper">
