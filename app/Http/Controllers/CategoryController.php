@@ -68,5 +68,15 @@ class CategoryController extends Controller
 
         return redirect()->route("$this->table.view_all")->with("success", "Xóa category thành công");
     }
+<<<<<<< HEAD
     
+=======
+    public function view_category()
+    {
+        $array_category = Category::with("topic")->get();
+        return view("category",[
+            "array_category" => $array_category
+        ]);
+    }
+>>>>>>> 87da27f39f848c389e6b3d2a1697f2576f9cf4b3
 }

@@ -202,12 +202,14 @@ span.psw {
 <div class="header">
 		<div class="nav-bar-logo">
 			<a href="{{route('reddit')}}">
-				<img src="{{ asset('storage/LogoWibu.jpg') }}">
+				<img src="{{ asset('storage/photo/LogoWibu.jpg') }}">
 			</a>
 			
 		</div>
 		<div class="nav-bar-search">
-			<input id="search" type="search" name="search" placeholder="Search...">
+			<form>
+				<input id="search" type="search" name="search" value="{{ $search }}" placeholder="Search...">
+			</form>
 		</div>
 		<div class="nav-bar-login-signUp-logout">
 			@if (Session::has('user_id'))

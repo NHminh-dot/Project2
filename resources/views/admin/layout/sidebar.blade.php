@@ -28,6 +28,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('admin.comment.view_all')}}"><i class="fa fa-fw fa-rocket"></i>Comment</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.tag.view_all')}}"><i class="fa fa-fw fa-tag"></i>Tag</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.post_tag.view_all')}}"><i class="fa fa-fw fa-tag"></i>Post Tag</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>

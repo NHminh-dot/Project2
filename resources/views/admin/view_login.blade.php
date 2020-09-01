@@ -39,14 +39,16 @@
                 <a href="#">
                     <img class="logo-img" src="storage/photo/logoblue.png" alt="logo">
                 </a>
-                <span class="splash-description">
-                    {{-- Please enter your user information. --}}
-                    @if (Session::has('error'))
-                        {{ Session::get('error') }}
-                    @endif
-                    @if (Session::has('success'))
-                        {{ Session::get('success') }}
-                    @endif
+                <span class="splash-description" style="color:red">
+                    <strong>
+                        {{-- Please enter your user information. --}}
+                        @if (Session::has('error'))
+                            {{ Session::get('error') }}
+                        @endif
+                        @if (Session::has('success'))
+                            {{ Session::get('success') }}
+                        @endif
+                    </strong>
                 </span>
             </div>
             <div class="card-body">
