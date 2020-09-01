@@ -21,11 +21,11 @@ class CheckUserIsAdmin
                 return $next($request);
             }
             else {
-                return redirect()->route('view_login')->with('error','Do not have permission');    
+                return redirect()->route('admin.view_login')->with('error','Do not have permission');    
             }
         }
         else{
-            return redirect()->route('view_login')->with('error','Mày chưa đăng nhập');
+            return redirect()->route('admin.view_login')->with('error','Mày chưa đăng nhập');
         }
     }
 

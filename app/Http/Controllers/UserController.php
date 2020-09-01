@@ -49,12 +49,15 @@ class UserController extends Controller
     }
     public function process_update($id, Request $rq)
     {
-        // if ($rq->has('new_picture')) {
-        //     Storage::disk('public')->put('photo',$rq->new_picture);
-        // }
-        // $user = User::find($id);
-        // Storage::disk('public')->put('photo',$rq->new_picture);
-    	User::find($id)->update($rq->all());
+        if ($rq->has('picture')) {
+            $picture = Storage::disk('public')->put('photo',$rq->picture);
+            $array_update = array_merge($rq->except('picture'),['picture' => $picture]);
+        }
+        else{
+            $array_update = array_merge($rq->except('picture'));   
+        }
+        User::find($id)->update($array_update);
+
     	return redirect()->route("$this->table.view_all")->with("success", "Sửa user thành công");
     }
     public function delete($id)
@@ -75,8 +78,4 @@ class UserController extends Controller
             "user" => $user,
         ]);
     }
-    // public function updatePhoto($id, Request $rq)
-    // {
-    //     Controller::updatePicture();
-    // }
 }

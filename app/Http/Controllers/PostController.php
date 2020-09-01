@@ -7,7 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use Session;
-
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -67,8 +67,35 @@ class PostController extends Controller
 
         return redirect()->route("$this->table.view_all")->with("success", "Xóa post thành công");
     }
-    public function submit()
+    public function submit(Request $rq)
     {
-        return view("submit");
+        $array_post = Post::get();
+        $array_category = Category::get();
+        return view("submit",[
+            "array_post" => $array_post,
+            "array_category" => $array_category,
+        ]);
+    }
+    public function store(Request $rq)
+    {
+        // validate
+        // $validatedData = $request->validate([
+        //     'title' => 'required|unique:posts|max:255',
+        //     'content' => 'required',
+        // ]);
+
+        //Store
+        $user_id = Session::get('user_id');
+        $title = $rq->title;
+        $content = $rq->content;
+        $category_id = $rq->category_id;
+        $insert_post = Post::create([
+            'title' => $title,
+            'content' => $content,
+            'created_by' => $user_id,
+            'category_id' => $category_id,
+        ]);
+        // dd($insert_post);
+        return redirect()->route("reddit");
     }
 }

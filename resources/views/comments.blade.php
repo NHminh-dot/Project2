@@ -300,7 +300,21 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>	
 <script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript">
-	CKEDITOR.replace('comment');
+// 	CKEDITOR.replace('comment', {
+//     on: {
+//         instanceReady: function( ev ) {
+//             // Output paragraphs as <p>Text</p>.
+//             this.dataProcessor.writer.setRules( 'p', {
+//                 indent: false,
+//                 breakBeforeOpen: true,
+//                 breakAfterOpen: false,
+//                 breakBeforeClose: false,
+//                 breakAfterClose: true
+//             });
+//         }
+//     }
+// } );
+CKEDITOR.replace( 'comment', { customConfig: 'ckeditor/config.js' } );
 </script>
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>

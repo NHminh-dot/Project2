@@ -181,10 +181,11 @@
 						<div class="create-post_avatar-user">
 							<a href="#">
 								<img class="avatar" style="max-width: 30px;" src="{{ Session::get('picture') }}">
+								{{-- <img class="avatar" style="max-width: 30px;" src="{{ pare_url_file(Session::get('picture')) }}"> --}}
 							</a>
 						</div>
 						<div class="create-post_input">
-							<a href="{{ route('submit') }}"><input type="text" name="" placeholder="&nbsp Create Post"></a>
+							<a href="{{ route("submit") }}"><input type="text" name="" placeholder="&nbsp Create Post"></a>
 						</div>
 					</div>
 					@endif

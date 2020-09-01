@@ -30,6 +30,10 @@ class Post extends Model
         // return $this->hasMany(Comment::class);
         return $this->hasMany('App\Models\Comment');
     }
+    public function post_tag()
+    {
+        return $this->hasMany(PostTag::class);   
+    }
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
     public function getSomeDateAttribute($date)
     {

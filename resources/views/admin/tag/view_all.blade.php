@@ -35,109 +35,37 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered first">
                         <thead>
-							<a href="{{ route('admin.user.view_insert') }}">
-								New User
+							<a href="{{ route('admin.tag.view_insert') }}">
+								New Role
 							</a>
 							@if (Session::has('success'))
 								<h1>
 									{{ Session::get('success') }}
 								</h1>
 							@endif
-							{{-- <table border="1" width="100%">
-								<caption>
-									<form>
-										Search Username: 
-										<input type="search" name="search_username" value="{{ $search_username }}">
-									</form>
-								</caption> --}}
 							<tr>
 								<th>ID</th>
-								<th>USERNAME</th>
-								{{-- <th>LOGIN NAME</th> --}}
-								{{-- <th>PASSWORD</th> --}}
-								<th>EMAIL</th>
-								<th>DOB</th>
-								<th>BIOGRAPHY</th>
-								<th>PICTURE</th>
-								<th>GENDER</th>
-								<th>STATUS</th>
-								<th>CREATED AT</th>
-								<th>UPDATED AT</th>
-								<th>LAST TIME LOGIN</th>
-								<th>ROLE</th>
+								<th>NAME</th>
 								<th>EDIT</th>
 								<th>DELETE</th>
 							</tr>
 						</thead>	
 						<tbody>
-							@foreach ($array_user as $user)
-								<tr style="text-align: center;">
+							@foreach ($array_tag as $tag)
+								<tr>
 									<td>
-										{{ $user->id }}
+										{{ $tag->id }}
 									</td>
 									<td>
-										{{ $user->username }}
-									</td>
-									{{-- <td>
-										{{ $user->login_name }}
-									</td> --}}
-									{{-- <td>
-										{{ $user->password }}
-									</td> --}}
-									<td>
-										{{ $user->email }}
+										{{ $tag->name }}
 									</td>
 									<td>
-										{{ $user->date_of_birth }}
-									</td>
-									<td>
-										<div style="overflow: scroll; height: 200px;">
-											{{ $user->biography }}
-										</div>
-									</td>
-									<td>
-										{{-- <img src="{{ $user->picture }}"> --}}
-										<img style="max-width: 150px;" src="{{ asset("storage/$user->picture") }}">
-									</td>
-									<td>
-										{{-- {{ $user->gender }} --}}
-										@if ($user->gender==0)
-											Nữ
-										@endif	
-										@if ($user->gender==1)
-											Nam
-										@endif	
-										@if ($user->gender==2)
-											Khác
-										@endif
-									</td>
-									<td>
-										@if ($user->status == 1)
-											Active
-										@endif
-										@if ($user->status == 0)
-											InActive
-										@endif
-									</td>
-									<td>
-										{{ $user->created_at }}
-									</td>
-									<td>
-										{{ $user->updated_at }}
-									</td>
-									<td>
-										{{ $user->last_time_login }}
-									</td>
-									<td>
-										{{ $user->role->name }}
-									</td>
-									<td>
-										<a href="{{ route('admin.user.view_update',['id' => $user->id]) }}">
+										<a href="{{ route('admin.tag.view_update',['id' => $tag->id]) }}">
 											Edit
 										</a>
 									</td>
 									<td>
-										<a href="{{ route('admin.user.delete',['id' => $user->id]) }}">
+										<a href="{{ route('admin.tag.delete',['id' => $tag->id]) }}">
 											Delete
 										</a>
 									</td>
@@ -147,19 +75,7 @@
 						<tfoot>
 							<tr>
 								<th>ID</th>
-								<th>USERNAME</th>
-								{{-- <th>LOGIN NAME</th> --}}
-								{{-- <th>PASSWORD</th> --}}
-								<th>EMAIL</th>
-								<th>DOB</th>
-								<th>BIOGRAPHY</th>
-								<th>PICTURE</th>
-								<th>GENDER</th>
-								<th>STATUS</th>
-								<th>CREATED AT</th>
-								<th>UPDATED AT</th>
-								<th>LAST TIME LOGIN</th>
-								<th>ROLE</th>
+								<th>NAME</th>
 								<th>EDIT</th>
 								<th>DELETE</th>
 							</tr>
@@ -192,5 +108,4 @@
         </div>
     </div>
 </div>
-{{-- {{ $array_user->links() }} --}}
 @endsection

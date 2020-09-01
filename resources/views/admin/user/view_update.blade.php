@@ -25,8 +25,11 @@
 	Biography:
 	<textarea name="biography">{{ $user->biography }}</textarea>
 	<br>
-	New Picture:
-	<input type="file" name="new_picture" accept="images/*">
+	Picture:
+	<input type="file" name="picture" accept="image/*">
+	<br>
+{{-- 	New Picture:
+	<input type="file" name="new_picture" accept="images/*"> --}}
 	Or keep old picture:
 	<img src="{{-- images/ --}}{{ $user->picture }}">
 	<br>

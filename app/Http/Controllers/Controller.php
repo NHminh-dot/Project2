@@ -35,7 +35,7 @@ class Controller
     {
         return view('index');
     }
-    public function reddit()
+    public function reddit(Request $rq)
     {
         // $time = now()->subDay();
         // $correctedComparisons = Comment::where('post_id')->get();
@@ -43,26 +43,26 @@ class Controller
         // $commentCount = $commentList->count();
         // $comments = Comment::all();
         // $comment = Comment::groupBy('post_id')->having('count("post_id")', '<=', 'post_id')->get();
-        $array_post = Post::with("user")->paginate(20);
         // $array_comment = Comment::with("post")->get();
         // $comments = Post::find('id')->comments;
+        $search = $rq->search;
+        $array_post = Post::with("user")->where('title','like',"%$search%")->orderBy('id','desc')->paginate(20);
         return view("reddit",[
+            "search" => $search,
             "array_post" => $array_post,
-            // "comments" => $comments,
-            // "array_comment" => $array_comment,
         ]);
     }
-    public function comments($id)
+    public function comments($id, Request $rq)
     {
-        $post_id = Post::find($id);
         // $array_post = Post::where('id',$id)->get();
-        $array_post2 = Post::where('id',$id)->with("comments")->get();
         // dd($array_post2);
+        $search = $rq->search;
+        $post_id = Post::find($id);
+        $array_post2 = Post::where('id',$id)->where('title','like',"%$search%")->with("comments")->get();
         return view("comments",[
+            'search' => $search,
             "post_id" => $post_id,
-            // "array_post" => $array_post,
             "array_post2" => $array_post2
-            // "array_comment" => $array_comment,
         ]);
     }
     public function view_self_info($id)
