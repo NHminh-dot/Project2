@@ -1,87 +1,89 @@
 <!doctype html>
-<html lang="en">
- 
+<html lang="en-US">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/circular-std_style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/fonts/fontawesome/css/fontawesome-all.css') }}">
-    <style>
-    html,
-    body {
-        height: 100%;
-    }
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Responsive HTML5 Template">
+    <meta name="author" content="author.com">
+    <title>WibUwU</title>
 
-    body {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-align: center;
-        align-items: center;
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-image: url({{ asset('storage/photo/M73T8JZyToRbyt9RjASFRi2SasL0bXc2n3Sj8K7X.png') }});
-    }
-    .logo-img{
-        width: 200px;
-    }
-    </style>
+    <!-- STYLESHEET -->
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="{{asset('css/UnityStyle.css')}}">
+   <link rel="stylesheet" href="{{asset('fonts/icons/main/mainfont/style.css')}}">
+   <link rel="stylesheet" href="{{asset('fonts/icons/font-awesome/css/font-awesome.min.css')}}">
+
+    <!-- Vendor -->
+    <link rel="stylesheet" href="{{asset('vendor/bootstrap/v3/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/bootstrap/v4/bootstrap-grid.css')}}">
+    <!-- Custom -->
+    <link rel="stylesheet" href="{{asset('css/UnityCustomStyle.css')}}">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 </head>
-
 <body>
-    <div class="splash-container">
-        <div class="card ">
-            <div class="card-header text-center">
-                <a href="#">
-                    <img class="logo-img" src="storage/photo/logoblue.png" alt="logo">
-                </a>
-                <span class="splash-description">
-                    {{-- Please enter your user information. --}}
-                    @if (Session::has('error'))
-                        {{ Session::get('error') }}
-                    @endif
-                    @if (Session::has('success'))
-                        {{ Session::get('success') }}
-                    @endif
-                </span>
-            </div>
-            <div class="card-body">
-                <form action="{{ route('process_login') }}" method="post">
-                	{{ csrf_field() }}
-                    <div class="form-group">
-                        <input class="form-control form-control-lg" name="login_name" id="username" type="text" placeholder="Username" autocomplete="off">
+
+<div class="signup">
+    <!-- HEADER -->
+
+    <!-- MAIN -->
+    <main class="signup__main">
+        <img class="signup__bg" src="images/signup-bg.png" alt="bg">
+
+        <div class="container">
+            <div class="signup__container">
+                <div class="signup__logo">
+                    <a href="{{route('reddit')}}"><img src="{{asset('storage/WibUwU.png')}}" alt="logo" style="width: 200px;"></a>
+                </div>
+
+                <div class="signup__head">
+                    <h3>Login into your WibUwU account</h3>
+                </div>
+                <div class="signup__form">
+                    <form action="{{route('process_login')}}" method="post">
+                    {{ csrf_field() }}
+                    <div class="signup__section">
+                        <label class="signup__label" for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username">
                     </div>
-                    <div class="form-group">
-                        <input class="form-control form-control-lg" name="password" id="password" type="password" placeholder="Password">
+                    <div class="signup__section">
+                        <label class="signup__label" for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
                     </div>
-                    <div class="form-group">
-                        <label class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Remember Me</span>
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
-                </form>
-            </div>
-            <div class="card-footer bg-white p-0  ">
-                <div class="card-footer-item card-footer-item-bordered">
-                    <a href="#" class="footer-link">Create An Account</a></div>
-                <div class="card-footer-item card-footer-item-bordered">
-                    <a href="#" class="footer-link">Forgot Password</a>
+                   <button class="signup__btn-create btn btn--type-02">Login</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
-  
-    <!-- ============================================================== -->
-    <!-- end login page  -->
-    <!-- ============================================================== -->
-    <!-- Optional JavaScript -->
-    <script src="{{asset('js/concept-master_assets_vendor_bootstrap_js_bootstrap.bundle.js')}}"></script>
-    <script src="{{asset('js/concept-master_assets_vendor_jquery_jquery-3.3.1.min.js')}}"></script>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="signup__footer">
+        <div class="container">
+            <div class="signup__footer-content">
+                <ul class="signup__footer-menu">
+                    <li><a href="#">Teams</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Send Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>
+
+    <!-- JAVA SCRIPT -->
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/velocity/velocity.min.js')}}"></script>
+    <script src="{{asset('js/UnityApp.js')}}"></script>
+
 </body>
- 
 </html>

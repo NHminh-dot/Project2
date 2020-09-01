@@ -10,7 +10,6 @@ class SignUpController extends Controller
 {
     public function sign_up_process(Request $rq)
 	 {
-
 	 	// dd($rq);
 	 	$username = $rq->username;
 	 	$login_name = $rq->login_name;
@@ -27,7 +26,6 @@ class SignUpController extends Controller
 	 		'gender'=>$gender,
 	 		'role_id' => '1',
 	 	]);
-	 	// dd($rq);
 	 	return redirect()->route("reddit")->with("success","Sign up success!");
 	 }
 }

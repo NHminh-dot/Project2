@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Topic;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Category;
 use Storage;
 use Carbon\Carbon;
 
@@ -18,7 +20,19 @@ class Controller
     }
     public function topic()
     {
-        return view("topic");
+        // $array_category = topic::with("category")->get();
+        $array_topic = [];
+        $list_topic = Topic::get();
+        foreach ($list_topic as $key => $topic) {
+            $array_category = Category::where('topic_id', $topic->id)
+            ->get()->toArray();
+            $array_topic[$topic->id]["category"] = $array_category;
+            $array_topic[$topic->id]["name"] = $topic->name;
+        }
+        // dd($array_topic);
+        return view("topic",
+        ["array_topic" => $array_topic,
+        ]);
     }
     public function write_post()
     {
@@ -29,10 +43,29 @@ class Controller
         "array_category" => $array_category,
         ]);
     }
-    public function index()
+    public function category($id)
     {
-        return view('index');
+        $category_id = Category::find($id);
+
+        // $array_post = Post::where('id',$id)->get();
+        $array_category = Category::where('id',$id)->with("post")->get();
+      
+        return view("category",[
+            "category_id" => $category_id,
+            "array_category" => $array_category,
+            // "array_comment" => $array_comment,
+        ]);
     }
+    public function follow()
+    {
+       $user_id = Session::get('user_id');
+       $category_id = Category::find($id);
+       FollowedCategory::create([
+            'user_id' => $user_id,
+            'category_id' => $category_id
+       ]);
+       return redirect()->route('category');
+    } 
     public function reddit()
     {
         // $time = now()->subDay();

@@ -50,22 +50,50 @@
             </div>
             <div class="posts">
                 <div class="posts__head">
-                    <div class="posts__topic"><h1>All Topic</h1></div>
+                    <div class="posts__topic"><h1>Category</h1></div>
+                    <div class="posts__topic-btn">
+                        @if(Session::has('user_id'))
+                    	<button {{-- onclick="followButton()" --}}>
+                            <p id="follow_button"><a href="{{route('follow')}}">Follow</a></p>
+                    	</button>
+                        @endif
+                    </div>
                 </div>
-            @foreach($array_topic as $topic)
-    		<div class="topic__content">
-                <div class="topic__title">
-                    <h3>{{$topic['name']}}</h3>
+            @foreach ($category_id->post as $post)
+                <div class="posts__item">
+                    <div class="posts__section-left">
+                        <div class="posts__topic">
+                            <div class="posts__content">
+                                <a href="{{ route('comments',['id' => $post->id]) }}">
+                                    <h3>{{ $post->title }}</h3>
+                                </a>
+                            </div>
+                        </div>
+                        {{-- <div class="posts__category"><a href="#" class="category">{{ $category->post->get('content') }}</a></div> --}}
+                    </div>
+                    <div class="posts__section-right">
+                        {{-- <div class="posts__replies">{{ $post->comments->count() }}</div>
+                        <div class="posts__activity">{{ $post->created_at->diffForHumans() }}</div> --}}
+                    </div> 
                 </div>
-                <div class="topic__list">
-                    <ul>
-                        @foreach($topic['category'] as $category)
-                        <li><a href="{{ route('category',['id' => $category['id']]) }}">{{ $category['name'] }} </a></li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-            @endforeach
+                @endforeach
     </main>
+    <script>
+// function followButton() {
+//   var followButton = document.getElementById('follow_button');
+//   if (followButton.innerHTML.match("Follow")) {
+//    followButton.innerHTML = Unfollow;
+//     followButton.style.background-color='lightgreen';
+//   } else {
+//      followButton.innerHTML = Follow;
+//      followButton.style.background-color='white';
+//   }
+// }
+
+</script>
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/velocity/velocity.min.js')}}"></script>
+    <script src="{{asset('js/UnityApp.js')}}"></script>
+
 </body>
 </html>

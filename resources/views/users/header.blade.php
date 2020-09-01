@@ -20,16 +20,32 @@
                     </div>
                 </div>
                 <div class="header__user">
+                    @if (Session::has('user_id'))
+                        <div class="header__user">
+                            <div class="header__user-btn" data-dropdown-btn="user">
+                                <img src="" alt="avatar">
+                                <i class="icon-Arrow_Below"></i>
+                            </div>
+                            <nav class="dropdown dropdown--design-01" data-dropdown-list="user">
+                                <div>
+                                    <div class="dropdown__icons">
+                                        <a href="{{route('logout')}}"><i class="icon-Logout"></i>Logout</a>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    @else
                     <div class="header__menu">
                         <div class="header__menu-btn">
-                            <a href="">Login</a>
+                            <a href="{{route('login')}}">Login</a>
                         </div>
                     </div>
                     <div class="header__user">
                         <div class="header__user-btn">
-                            <a href="">Sign Up</a>
+                            <a href="{{route('sign_up')}}">Sign Up</a>
                         </div>
                     </div>
+                    @endif
                     {{-- <div class="header__user-btn" data-dropdown-btn="user">
                         <img src="{{asset('fonts/icons/avatars/A.svg')}}" alt="avatar">
                         azyrusmax<i class="icon-Arrow_Below"></i>

@@ -26,5 +26,5 @@ class TopicController extends Controller
     {
     	return view ("category");
     }
-
+    
 }

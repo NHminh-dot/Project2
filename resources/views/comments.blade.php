@@ -96,18 +96,7 @@
                                 <div class="topic__text">
                                  {{ $post->content }}
                                 </div>
-                                <div class="topic__footer">
-                                    <div class="topic__footer-likes">
-                                        <div>
-                                            <a href="#"><i class="icon-Upvote"></i></a>
-                                            <span></span>
-                                        </div>
-                                        <div>
-                                            <a href="#"><i class="icon-Downvote"></i></a>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                          @endforeach
@@ -128,23 +117,9 @@
                                     </div>
                                 </div>
                             </div>
-                            
                             <div class="topic__content">
-
                                 <div class="topic__text">
                                    {{ $comment->content }}
-                                </div>
-                                <div class="topic__footer">
-                                    <div class="topic__footer-likes">
-                                        <div>
-                                            <a href="#"><i class="icon-Upvote"></i></a>
-                                            <span></span>
-                                        </div>
-                                        <div>
-                                            <a href="#"><i class="icon-Downvote"></i></a>
-                                            <span></span>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -182,8 +157,13 @@
             </div>
         </div>
     </footer>
-
+</body>
+</html>
     <!-- JAVA SCRIPT -->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/velocity/velocity.min.js')}}"></script>
     <script src="{{asset('js/UnityApp.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    document.getElementsClassName('topic__text').innerHTML
+</script>

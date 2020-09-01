@@ -68,4 +68,5 @@ class CategoryController extends Controller
 
         return redirect()->route("$this->table.view_all")->with("success", "Xóa category thành công");
     }
+    
 }

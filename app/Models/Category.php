@@ -14,6 +14,10 @@ class Category extends Model
     	'created_by',
     	'topic_id'
     ];
+    public function post()
+    {
+        return $this->hasMany(Post::class);
+    }
     public function topic()
     {
     	return $this->belongsTo('App\Models\Topic','topic_id');
