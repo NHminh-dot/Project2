@@ -27,7 +27,6 @@ class Post extends Model
     }
     public function comments()
     {
-        // return $this->hasMany(Comment::class);
         return $this->hasMany('App\Models\Comment');
     }
     public function post_tag()

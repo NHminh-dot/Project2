@@ -76,6 +76,6 @@ class CommentController extends Controller
         ]);
         // dd($comment);
 
-        return redirect()->route("comments",['id' => $post->id]);
+        return redirect()->back();//route("comments",['id' => $post->id]);
     }
 }

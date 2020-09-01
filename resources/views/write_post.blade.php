@@ -84,53 +84,67 @@
     <main>
         <div class="container">
             <div class="create">
-                <form action="" method="post">
+                <form action="{{ route('store') }}" method="post">
                     {{csrf_field()}}
-                <div class="create__head">
-                    <div class="create__title"><img src="fonts/icons/main/New_Topic.svg" alt="New topic">Create New Thread</div>
-                    <span>Forum Guidelines</span>
-                </div>
-                <div class="create__section">
-                    <label class="create__label" for="title">Thread Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Add here">
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="create__section">
-                            <label class="create__label" for="category">Select Category</label>
-                            <label class="custom-select">
-                                <select id="category">
-                                    @foreach($array_topic as $topic)
-                                        <option>{{$topic->name}}</option>
-                                    @endforeach
-                                </select>
-                            </label>
-                        </div>
+                    <div class="create__head">
+                        <div class="create__title"><img src="fonts/icons/main/New_Topic.svg" alt="New topic">Create New Thread</div>
+                        <span>Forum Guidelines</span>
                     </div>
-                    <div class="col-md-6">
-                        <div class="create__section">
-                            <label class="create__label" for="sub-category">Select Sub Category</label>
-                            <label class="custom-select">
-                                <select id="sub-category">
-                                    @foreach($array_category as $category)
-                                        <option>($category->name)</option>
-                                    @endforeach
-                                </select>
-                            </label>
-                        </div>
+                    <div class="create__section">
+                        <label class="create__label" for="title">Thread Title</label>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Add here">
                     </div>
-                </div>
-                <div class="create__section create__textarea">
-                    <textarea class="form-control" id="description"></textarea>
-                </div>
-                <div class="create__section">
-                    <label class="create__label" for="tags">Add Tags</label>
-                    <input type="text" class="form-control" id="tags" placeholder="e.g. nature, science">
-                </div>
-                <div class="create__footer">
-                    <a href="#" class="create__btn-cansel btn">Cancel</a>
-                    <a href="#" class="create__btn-create btn btn--type-02">Create Thread</a>
-                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="create__section">
+                                <label class="create__label" for="category">Select Category</label>
+                                <label class="custom-select">
+                                    <select id="category" name="category_id">
+                                        @foreach($array_category as $category)
+                                            <option id="category" value="{{ $category->id }}">
+                                                {{ $category->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                       {{--  <div class="col-md-6">
+                            <div class="create__section">
+                                <label class="create__label" for="sub-category">Select Sub Category</label>
+                                <label class="custom-select">
+                                    <select id="sub-category" name="category_id">
+                                        @foreach($array_category as $category)
+                                            <option id="category" value="{{ $category->id }}">
+                                                {{ $category->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </label>
+                            </div>
+                        </div> --}}
+                    </div>
+                    <div class="create__section create__textarea">
+                        <textarea class="form-control" name="content" id="description"></textarea>
+                    </div>
+                    {{-- <div class="create__section">
+                        <label class="create__label" for="tags">Add Tags</label>
+                        <input type="text" class="form-control" id="tags" placeholder="e.g. nature, science">
+                        <label class="custom-select">
+                            <select id="tag" name="tag_id">
+                                <option value="">e.g. nature, science</option>
+                                @foreach($array_tag as $tag)
+                                    <option id="tag" value="{{ $tag->id }}">
+                                        {{ $tag->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </label>
+                    </div> --}}
+                    <div class="create__footer">
+                        <input type="reset" class="create__btn-cansel btn" value="Cancel">
+                        <button class="create__btn-create btn btn--type-02">Post</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -180,3 +194,6 @@
 
 </body>
 </html>
+
+
+

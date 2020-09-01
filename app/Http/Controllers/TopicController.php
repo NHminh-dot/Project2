@@ -83,6 +83,10 @@ class TopicController extends Controller
     {
     	return view ("category");
     }
+<<<<<<< HEAD
+    
+=======
 
 >>>>>>> 50dca48542ea73065c35dd3d22b0bc76c059df3f
+>>>>>>> 87da27f39f848c389e6b3d2a1697f2576f9cf4b3
 }

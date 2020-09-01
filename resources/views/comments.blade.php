@@ -94,20 +94,10 @@
                             </div>
                             <div class="topic__content">
                                 <div class="topic__text">
-                                 {{ $post->content }}
+                                 {{-- {{ $post->content }} --}}
+                                 {!! $post->content !!}
                                 </div>
-                                <div class="topic__footer">
-                                    <div class="topic__footer-likes">
-                                        <div>
-                                            <a href="#"><i class="icon-Upvote"></i></a>
-                                            <span></span>
-                                        </div>
-                                        <div>
-                                            <a href="#"><i class="icon-Downvote"></i></a>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                          @endforeach
@@ -128,27 +118,26 @@
                                     </div>
                                 </div>
                             </div>
-                            
                             <div class="topic__content">
-
                                 <div class="topic__text">
-                                   {{<!!> $comment->content </!!>}}
-                                </div>
-                                <div class="topic__footer">
-                                    <div class="topic__footer-likes">
-                                        <div>
-                                            <a href="#"><i class="icon-Upvote"></i></a>
-                                            <span></span>
-                                        </div>
-                                        <div>
-                                            <a href="#"><i class="icon-Downvote"></i></a>
-                                            <span></span>
-                                        </div>
-                                    </div>
+                                   {{-- {!!$comment->content!!} --}}
+                                   {!! $comment->content !!}
                                 </div>
                             </div>
                         </div>
                         @endforeach
+                        <div class="create__section">
+                            <form action="{{ route('comment_process_insert',['id' => $post_id->id]) }}" method="post">
+                                {{ csrf_field() }}
+                                <label class="create__label" for="answer"><STRONG>Comment</STRONG></label>
+                                <div class="create__section create__textarea">
+                                    <textarea class="form-control" name="content" id="comment"></textarea>
+                                </div>
+                                <div class="create__footer">
+                                    <button class="create__btn-create btn btn--type-02">Post</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -182,8 +171,17 @@
             </div>
         </div>
     </footer>
-
     <!-- JAVA SCRIPT -->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/velocity/velocity.min.js')}}"></script>
     <script src="{{asset('js/UnityApp.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    document.getElementsClassName('topic__text').innerHTML
+</script>
+<script src="{{ asset('ckeditor/ckeditor.js')}}"></script>
+<script>
+    CKEDITOR.replace( 'comment' );
+</script>
+</body>
+</html>

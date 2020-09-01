@@ -9,7 +9,11 @@
 		padding: 0;
 		border: 0;
 		font-size: 100%;
+<<<<<<< HEAD
+		font: inherit;
+=======
 		font: sans-serif;
+>>>>>>> 87da27f39f848c389e6b3d2a1697f2576f9cf4b3
 		vertical-align: baseline;
 		background-color: #DAE0E6;
 	}
@@ -77,6 +81,8 @@
 	.container-head{
 		color:#5C5858;
 		font-family: sans-serif;
+<<<<<<< HEAD
+=======
 		border-bottom: 1px solid #fff;
 		margin-bottom: 20px;
 	}
@@ -106,6 +112,7 @@
 		color: #3030FE;
 		background-color: white;
 		border: 1px solid #3030FE;
+>>>>>>> 87da27f39f848c389e6b3d2a1697f2576f9cf4b3
 	}
 </style>
 <body>
@@ -113,7 +120,15 @@
 		@include('layoutuser/header', ['some' => 'data'])
 		<div class="container">
 			<div style="margin: auto; max-width: 60%;">
-				<form action="{{ route('store') }}" method="post">
+<<<<<<< HEAD
+				<div class="container-head">
+					<h3>Create a post</h3>
+				</div>
+				<div style="background-color: red; margin: auto; width: 100%">
+					<textarea id="post"></textarea>
+				</div>
+=======
+				<form action="" method="post">
 					{{ csrf_field() }}
 					<div class="container-head">
 						<h3>Create a post</h3>
@@ -161,12 +176,16 @@
 					<input type="reset" class="button" id="button-cancel" name="cancel" value="cancel">
 					<input type="submit" class="button" id="button-post" name="submit" value="post">
 				</form>
+>>>>>>> 87da27f39f848c389e6b3d2a1697f2576f9cf4b3
 			</div>
 		</div>
 	</div>
 <script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript">
 	CKEDITOR.replace('post');
+<<<<<<< HEAD
+</script>	
+=======
 </script>
 {{-- <script type="text/javascript">
 	document.getElementById("category").innerHTML = "the full url" + window.location.href;
@@ -202,5 +221,6 @@
                     console.log(data);
                 }
 </script> --}}
+>>>>>>> 87da27f39f848c389e6b3d2a1697f2576f9cf4b3
 </body>
 </html>

@@ -43,8 +43,7 @@
                         <div class="btn-select" data-dropdown-btn="categories">All Categories</div>
                         <nav class="dropdown dropdown--design-01" data-dropdown-list="categories">
                             <ul class="dropdown__catalog row">
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-f9bc64"></i>Hobbies</a></li>
-                                
+                                <li class="col-xs-6"><a href="{{route('topic')}}" class="category"><i class="bg-f9bc64"></i>Topic</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -53,7 +52,6 @@
                         <div class="dropdown dropdown--design-01" data-dropdown-list="tags">
                             <div class="tags">
                                 <a href="#" class="bg-4f80b0">gaming</a>
-                               
                             </div>
                         </div>
                     </div>
@@ -68,6 +66,9 @@
                         <li><a href="#">Follow Feed</a></li>
                     </ul>
                 </div>
+                 @if (Session::has('success'))
+                            {{ Session::get('success') }}
+                        @endif
             </div>
             <div class="posts">
                 <div class="posts__head">
@@ -77,7 +78,7 @@
                     <div class="posts__activity">Activity</div>
                 </div>
                 <div class="posts__body">
-                    <div class="posts__item bg-fef2e0">
+                    <div class="posts__item bg-fef2e0"> 
                         <div class="posts__section-left">
                             <div class="posts__topic">
                                 <div class="posts__content">
@@ -109,6 +110,7 @@
                 </div>
                 @endforeach
             </div>
+            
         </div>
     </main>
 

@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Topic;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Category;
+use App\Models\Tag;
 use Storage;
+use Session;
 use Carbon\Carbon;
-
+use App\Http\Requests\PostRequest;
 
 class Controller
 {
@@ -18,21 +22,69 @@ class Controller
     }
     public function topic()
     {
-        return view("topic");
+        // $array_category = topic::with("category")->get();
+        $array_topic = [];
+        $list_topic = Topic::get();
+        foreach ($list_topic as $key => $topic) {
+            $array_category = Category::where('topic_id', $topic->id)
+            ->get()->toArray();
+            $array_topic[$topic->id]["category"] = $array_category;
+            $array_topic[$topic->id]["name"] = $topic->name;
+        }
+        // dd($array_topic);
+        return view("topic",
+        ["array_topic" => $array_topic,
+        ]);
     }
     public function write_post()
     {
-        $array_category = Post::with("category");
-        $array_topic = Post::with("topic");
-        return view("write_post",
-        ["array_topic" => $array_topic,
-        "array_category" => $array_category,
+        $array_topic = Topic::get();
+        $array_category = Category::get();
+        $array_tag = Tag::get();
+        return view("write_post",[
+            "array_topic" => $array_topic,
+            "array_category" => $array_category,
+            "array_tag" => $array_tag,
         ]);
     }
-    public function index()
+    public function store(Request $rq)
     {
-        return view('index');
+        $user_id = Session::get('user_id');
+        $title = $rq->title;
+        $content = $rq->content;
+        $category_id = $rq->category_id;
+        $insert_post = Post::create([
+            'title' => $title,
+            'content' => $content,
+            'created_by' => $user_id,
+            'category_id' => $category_id,
+        ]);
+        // dd($insert_post);
+        return redirect()->route("reddit");
     }
+    public function category($id)
+    {
+        $category_id = Category::find($id);
+
+        // $array_post = Post::where('id',$id)->get();
+        $array_category = Category::where('id',$id)->with("post")->get();
+      
+        return view("category",[
+            "category_id" => $category_id,
+            "array_category" => $array_category,
+            // "array_comment" => $array_comment,
+        ]);
+    }
+    public function follow()
+    {
+       $user_id = Session::get('user_id');
+       $category_id = Category::find($id);
+       FollowedCategory::create([
+            'user_id' => $user_id,
+            'category_id' => $category_id
+       ]);
+       return redirect()->route('category');
+    } 
     public function reddit(Request $rq)
     {
         // $time = now()->subDay();
@@ -72,24 +124,24 @@ class Controller
             "array_user" => $array_user,
         ]);
     }
-    public function updatePicture($id, Request $rq)
-    {
-        // if ($rq->has('new_picture')) {
-        //     $user->update(['new_picture' => $rq->file('new_picture')->store('photo','public')]);
-        // }
-        Storage::disk('public')->put('photo',$request->new_picture);
-    }
-    protected $table = 'user';
-    public function view_all_test(Request $rq)
-    {
-        $search_username = $rq->search_username;
-        $array_user = User::where('username','like',"%$search_username%")->with("role")->paginate(10);
-        return view("$this->table.view_all_test",[
-            "array_user" => $array_user,
-            "search_username" => $search_username,
-        ]); 
-        // return view('user.view_all_test');
-    }
+    // public function updatePicture($id, Request $rq)
+    // {
+    //     // if ($rq->has('new_picture')) {
+    //     //     $user->update(['new_picture' => $rq->file('new_picture')->store('photo','public')]);
+    //     // }
+    //     Storage::disk('public')->put('photo',$request->new_picture);
+    // }
+    // protected $table = 'user';
+    // public function view_all_test(Request $rq)
+    // {
+    //     $search_username = $rq->search_username;
+    //     $array_user = User::where('username','like',"%$search_username%")->with("role")->paginate(10);
+    //     return view("$this->table.view_all_test",[
+    //         "array_user" => $array_user,
+    //         "search_username" => $search_username,
+    //     ]); 
+    //     // return view('user.view_all_test');
+    // }
     public function sign_up()
     {
         return view('sign_up');

@@ -64,8 +64,7 @@
                         {{ $user = Session::get('user_id') }}
                     </span>
                         <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{-- <img src="{{ asset("storage/$user->picture") }}" alt="" class="user-avatar-md rounded-circle"> --}}
-                            <img src="{{ asset('stora') }}{{ Session::get('picture') }}" alt="" class="user-avatar-md rounded-circle">
+                            <img src="{{ asset('$user->picture') }}" alt="" class="user-avatar-md rounded-circle">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                             <div class="nav-user-info">

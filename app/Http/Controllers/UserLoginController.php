@@ -31,7 +31,7 @@ class UserLoginController //extends Controller
     		Session::put('username',$user->username);
             Session::put('picture', $user->picture);
 
-    		return redirect()->route('reddit');//->with('success', 'Đăng nhập thành công');
+    		return redirect()->route('reddit',[$user->username,$user->picture]);//->with('success', 'Đăng nhập thành công');
     	} catch (Exception $e) {
     		// dd($e);
     		return redirect()->route('login')->with('error', 'Đăng nhập sai rồi');
