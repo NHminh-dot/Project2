@@ -23,8 +23,11 @@
                     @if (Session::has('user_id'))
                         <div class="header__user">
                             <div class="header__user-btn" data-dropdown-btn="user">
-                                <img src="" alt="avatar">
+                                <img src="{{Session::get('picture')}}" alt="avatar">
+                                <span>{{Session::get('username')}}
+                                </span>
                                 <i class="icon-Arrow_Below"></i>
+
                             </div>
                             <nav class="dropdown dropdown--design-01" data-dropdown-list="user">
                                 <div>

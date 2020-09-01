@@ -50,16 +50,24 @@
             </div>
             <div class="posts">
                 <div class="posts__head">
-                    <div class="posts__topic"><h1>Category</h1></div>
+                    <div class="posts__topic"><h1>{{ $category->name }}</h1></div>
                     <div class="posts__topic-btn">
                         @if(Session::has('user_id'))
-                    	<button {{-- onclick="followButton()" --}}>
-                            <p id="follow_button"><a href="{{route('follow')}}">Follow</a></p>
-                    	</button>
+                            @if(isset($follow))
+                                <button {{-- onclick="followButton()" --}}>
+                                {{-- {{ $cate_id = Session::get('category_id') }} --}}
+                                <p id="follow_button"><a href="{{route('unfollow',['id' => $category->id])}}">Unfollow</a></p>
+                                </button>
+                            @else
+                                <button {{-- onclick="followButton()" --}}>
+                                {{-- {{ $cate_id = Session::get('category_id') }} --}}
+                                <p id="follow_button"><a href="{{route('follow',['id' => $category->id])}}">Follow</a></p>
+                                </button>
+                            @endif
                         @endif
                     </div>
                 </div>
-            @foreach ($category_id->post as $post)
+            @foreach ($category->post as $post)
                 <div class="posts__item">
                     <div class="posts__section-left">
                         <div class="posts__topic">
@@ -78,17 +86,32 @@
                 </div>
                 @endforeach
     </main>
+        <!-- FOOTER -->
+    <footer>
+        <div class="footer js-dropdown">
+            <div class="container">
+                <div class="footer__logo">
+                    <div>
+                        <img src="{{asset('storage/LogoWibu.jpg')}}">
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__tline">
+                        <i class="icon-Support"></i>
+                        <ul class="footer__menu">
+                            <li><a href="#">Support</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">The Team</a></li>
+                        </ul>
+                        
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </footer>
     <script>
-// function followButton() {
-//   var followButton = document.getElementById('follow_button');
-//   if (followButton.innerHTML.match("Follow")) {
-//    followButton.innerHTML = Unfollow;
-//     followButton.style.background-color='lightgreen';
-//   } else {
-//      followButton.innerHTML = Follow;
-//      followButton.style.background-color='white';
-//   }
-// }
 
 </script>
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>

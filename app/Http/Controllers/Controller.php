@@ -10,7 +10,8 @@ use App\Models\Comment;
 use App\Models\Category;
 use Storage;
 use Carbon\Carbon;
-
+use Session;
+use App\Models\FollowedCategory;
 
 class Controller
 {
@@ -43,34 +44,64 @@ class Controller
         "array_category" => $array_category,
         ]);
     }
-    public function category($id)
+    public function write_post_process(Request $rq)
     {
-        $category_id = Category::find($id);
+        // Post::create($rq->all());
+        $user_id = Session::get('user_id');
+        $title = $rq->title;
+        $content = $rq->content;
+        $category_id = $rq->category_id;
+        Post::create([
+            'title' => $title,
+            'content' => $content,
+            'created_by' => $user_id,
+            'category_id' => $category_id,
+        ]); 
 
-        // $array_post = Post::where('id',$id)->get();
-        $array_category = Category::where('id',$id)->with("post")->get();
-      
+        return redirect()->route('reddit')->with("success", "Thêm post thành công");
+    }
+    public function category($category_id)
+    {
+        $user_id = Session::get('user_id');
+
+        $category = Category::query()
+        ->with("post")
+        ->find($category_id);
+        $follow = FollowedCategory::query()
+        ->where('user_id',$user_id)
+        ->where('category_id',$category_id)
+        ->first();
+
+
         return view("category",[
-            "category_id" => $category_id,
-            "array_category" => $array_category,
+            "category" => $category,
+            "follow" => $follow,
             // "array_comment" => $array_comment,
         ]);
     }
-<<<<<<< HEAD
-    public function follow()
+    public function follow($category_id)
     {
        $user_id = Session::get('user_id');
-       $category_id = Category::find($id);
+       
        FollowedCategory::create([
             'user_id' => $user_id,
             'category_id' => $category_id
        ]);
-       return redirect()->route('category');
-    } 
-    public function reddit()
-=======
+      
+       return redirect()->back()->with("success","Followed success");
+    }
+    public function unfollow($category_id)
+    {
+        $user_id = Session::get('user_id');
+
+        FollowedCategory::
+        where('user_id',$user_id)
+        ->where('category_id',$category_id)
+        ->delete();
+
+        return redirect()->back()->with("success","Unfollowed success");
+    }
     public function reddit(Request $rq)
->>>>>>> 87da27f39f848c389e6b3d2a1697f2576f9cf4b3
     {
         // $time = now()->subDay();
         // $correctedComparisons = Comment::where('post_id')->get();

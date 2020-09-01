@@ -38,7 +38,7 @@
         <div class="container">
             <div class="signup__header-content">
                 <p><a href="#">Already have an account?</a></p>
-                <a href="#" class="btn">Sign In</a>
+                <a href="{{route('login')}}" class="btn">Sign In</a>
             </div>
         </div>
     </header>
