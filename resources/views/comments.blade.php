@@ -132,7 +132,7 @@
                             <div class="topic__content">
 
                                 <div class="topic__text">
-                                   {{ $comment->content }}
+                                   {{<!!> $comment->content </!!>}}
                                 </div>
                                 <div class="topic__footer">
                                     <div class="topic__footer-likes">
