@@ -31,7 +31,7 @@
     <![endif]-->
 </head>
 <body>
-{{-- ======= --}}
+
     <!-- HEADER -->
     @include('users/header')
     <!-- MAIN -->
@@ -120,8 +120,7 @@
             <div class="container">
                 <div class="footer__logo">
                     <div>
-                        <img src="fonts/icons/main/Logo_Forum.svg" alt="logo">Unity
-                    </div>
+                        <img src="{{asset('storage/LogoWibu.jpg')}}" alt="logo">
                 </div>
                 <div class="footer__nav">
                     <div class="footer__tline">
@@ -134,16 +133,6 @@
                         </ul>
                         
                     </div>
-                    <div class="footer__bline">
-                        <ul class="footer__menu">
-                            <li class="footer__copyright"><span>&copy; 2017 azyrusthemes.com</span></li>
-                            <li><a href="#">Teams</a></li>
-                            <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Send Feedback</a></li>
-                        </ul>
-                        
-                        <div class="footer__language-btn-m" data-dropdown-btn="language">Americas - English<i class="icon-Arrow_Below"></i></div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -153,9 +142,3 @@
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/velocity/velocity.min.js')}}"></script>
     <script src="{{asset('js/UnityApp.js')}}"></script>
-{{-- >>>>>>> 50dca48542ea73065c35dd3d22b0bc76c059df3f --}}
-</body>
-</html>
-
-
-	

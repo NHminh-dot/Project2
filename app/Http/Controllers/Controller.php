@@ -13,6 +13,9 @@ use Storage;
 use Session;
 use Carbon\Carbon;
 use App\Http\Requests\PostRequest;
+use App\Models\FollowedCategory;
+
+// use Session;
 
 class Controller
 {
@@ -62,29 +65,63 @@ class Controller
         // dd($insert_post);
         return redirect()->route("reddit");
     }
-    public function category($id)
+    public function write_post_process(Request $rq)
     {
-        $category_id = Category::find($id);
+        // Post::create($rq->all());
+        $user_id = Session::get('user_id');
+        $title = $rq->title;
+        $content = $rq->content;
+        $category_id = $rq->category_id;
+        Post::create([
+            'title' => $title,
+            'content' => $content,
+            'created_by' => $user_id,
+            'category_id' => $category_id,
+        ]); 
 
-        // $array_post = Post::where('id',$id)->get();
-        $array_category = Category::where('id',$id)->with("post")->get();
-      
+        return redirect()->route('reddit')->with("success", "Thêm post thành công");
+    }
+    public function category($category_id)
+    {
+        $user_id = Session::get('user_id');
+
+        $category = Category::query()
+        ->with("post")
+        ->find($category_id);
+        $follow = FollowedCategory::query()
+        ->where('user_id',$user_id)
+        ->where('category_id',$category_id)
+        ->first();
+
+
         return view("category",[
-            "category_id" => $category_id,
-            "array_category" => $array_category,
+            "category" => $category,
+            "follow" => $follow,
             // "array_comment" => $array_comment,
         ]);
     }
-    public function follow()
+    public function follow($category_id)
     {
        $user_id = Session::get('user_id');
-       $category_id = Category::find($id);
+       
        FollowedCategory::create([
             'user_id' => $user_id,
             'category_id' => $category_id
        ]);
-       return redirect()->route('category');
+       return redirect()->back()->with("success","Followed success");
+     
     } 
+    public function unfollow($category_id)
+    {
+        $user_id = Session::get('user_id');
+
+        FollowedCategory::
+        where('user_id',$user_id)
+        ->where('category_id',$category_id)
+        ->delete();
+
+        return redirect()->back()->with("success","Unfollowed success");
+    }
     public function reddit(Request $rq)
     {
         // $time = now()->subDay();
@@ -124,24 +161,6 @@ class Controller
             "array_user" => $array_user,
         ]);
     }
-    // public function updatePicture($id, Request $rq)
-    // {
-    //     // if ($rq->has('new_picture')) {
-    //     //     $user->update(['new_picture' => $rq->file('new_picture')->store('photo','public')]);
-    //     // }
-    //     Storage::disk('public')->put('photo',$request->new_picture);
-    // }
-    // protected $table = 'user';
-    // public function view_all_test(Request $rq)
-    // {
-    //     $search_username = $rq->search_username;
-    //     $array_user = User::where('username','like',"%$search_username%")->with("role")->paginate(10);
-    //     return view("$this->table.view_all_test",[
-    //         "array_user" => $array_user,
-    //         "search_username" => $search_username,
-    //     ]); 
-    //     // return view('user.view_all_test');
-    // }
     public function sign_up()
     {
         return view('sign_up');

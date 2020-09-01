@@ -23,7 +23,8 @@ Route::group(["middleware" => "CheckUser"], function() {
     Route::get("logout","UserLoginController@logout")->name("logout");
     Route::get("submit","PostController@submit")->name("submit");
     Route::post("comment_process_insert/{id}","CommentController@comment_process_insert")->name("comment_process_insert");
-    Route::post("follow","Controller@follow")->name("follow");
+    Route::get("follow/{id}","Controller@follow")->name("follow");
+    Route::get("unfollow/{id}","Controller@unfollow")->name("unfollow");
 });
 
 
