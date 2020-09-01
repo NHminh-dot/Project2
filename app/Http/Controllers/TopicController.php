@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Topic;
 use App\Models\User;
+use App\Models\Category;
 use Session;
 
 
 class TopicController extends Controller
 {
+<<<<<<< HEAD
     protected $table = "admin.topic";
     public function view_all()
     {
@@ -65,4 +67,22 @@ class TopicController extends Controller
 
         return redirect()->route("$this->table.view_all")->with("success", "Xóa topic thành công");
     }
+=======
+    public function view_topic($category)
+    {
+    	$array_topic = Topic::all();
+    	$array_category = Category::all();//->orderBy('created_at','desc');
+        // $user = User::find($id)
+        // dd($array_topic);
+    	return view("topic",[
+    		"array_topic" => $array_topic,
+    		"array_category" => $array_category
+    	]);
+    }
+    public function view_category()
+    {
+    	return view ("category");
+    }
+
+>>>>>>> 50dca48542ea73065c35dd3d22b0bc76c059df3f
 }

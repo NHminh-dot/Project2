@@ -14,22 +14,20 @@ class Controller
 {
     public function welcome()
     {
-    	return view("admin.welcome");
+        return view("admin.welcome");
     }
     public function topic()
     {
         return view("topic");
-
     }
-    public function post_test(Request $request)
+    public function write_post()
     {
-    	// $file_anh = $rq->file_anh->store('photo');
-
-    	Storage::disk('public')->put('photo',$request->file_anh);
-    }
-    public function show()
-    {
-    	return view('show');
+        $array_category = Post::with("category");
+        $array_topic = Post::with("topic");
+        return view("write_post",
+        ["array_topic" => $array_topic,
+        "array_category" => $array_category,
+        ]);
     }
     public function index()
     {
