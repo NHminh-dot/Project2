@@ -83,11 +83,19 @@
                         <div class="topic">
                             <div class="topic__head">
                                 <div class="topic__avatar">
-                                    <a href="#" class="avatar"><img src="{{ $post->user->picture }}" alt="avatar"></a>
+                                    <a href="#" class="avatar"><img class="user-avatar" src="{{ asset('storage/' . $post->user->picture) }}" alt="avatar"></a>
+                                    {{-- <img src="{{ asset('storage/' . $post->user->picture) }}" /> --}}
                                 </div>
                                 <div class="topic__caption">
                                     <div class="topic__name">
                                         <a href="#">{{ $post->user->username }}</a>
+                                        @if ($post->user->role->id == 1)
+                                            &nbsp|&nbsp<strong style="color:red">{{ $post->user->role->name }}</strong>
+                                        @elseif($post->user->role->id == 2)
+                                            &nbsp|&nbsp<strong style="color:blue">{{ $post->user->role->name }}</strong>
+                                        @else
+                                            &nbsp|&nbsp<strong style="color:gray">{{ $post->user->role->name }}</strong>
+                                        @endif
                                     </div>
                                     <div class="topic__date"><i class="icon-Watch_Later"></i>{{ $post->created_at->diffForHumans() }}</div>
                                 </div>
@@ -106,11 +114,19 @@
                         <div class="topic">
                             <div class="topic__head">
                                 <div class="topic__avatar">
-                                    <a href="#" class="avatar"><img src="{{ $comment->user->picture }}" alt="avatar"></a>
+                                    {{-- <a href="#" class="avatar"><img src="{{ $comment->user->picture }}" alt="avatar"></a> --}}
+                                    <a href="#" class="avatar"><img src="{{ asset('storage/' . $comment->user->picture) }}" alt="avatar"></a>
                                 </div>
                                 <div class="topic__caption">
                                     <div class="topic__name">
                                         <a href="#">{{ $comment->user->username }}</a>
+                                        @if ($comment->user->role->id == 1)
+                                            &nbsp|&nbsp<strong style="color:red">{{ $comment->user->role->name }}</strong>
+                                        @elseif($comment->user->role->id == 2)
+                                            &nbsp|&nbsp<strong style="color:blue">{{ $comment->user->role->name }}</strong>
+                                        @else
+                                            &nbsp|&nbsp<strong style="color:gray">{{ $comment->user->role->name }}</strong>
+                                        @endif
                                     </div>
                                     <div class="topic__date">
                                        

@@ -63,7 +63,7 @@ class Controller
             'category_id' => $category_id,
         ]);
         // dd($insert_post);
-        return redirect()->route("reddit");
+        return redirect()->route("reddit");//->with("wait","Bài viết đang chờ phê duyệt");
     }
     public function write_post_process(Request $rq)
     {
@@ -157,6 +157,15 @@ class Controller
         $user = User::find($id);
         $array_user = User::where('id','=',$id)->get();
         return view("admin.view_self_info",[
+            "user" => $user,
+            "array_user" => $array_user,
+        ]);
+    }
+    public function profile($id)
+    {
+        $user = User::find($id);
+        $array_user = User::where('id','=',$id)->get();
+        return view("profile",[
             "user" => $user,
             "array_user" => $array_user,
         ]);

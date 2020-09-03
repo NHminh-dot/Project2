@@ -8,13 +8,14 @@ use App\Models\User;
 use App\Models\Category;
 use Session;
 use App\Http\Requests\PostRequest;
+use Datetime;
 
 class PostController extends Controller
 {
     protected $table = "admin.post";
     public function view_all()
     {
-    	$array_post = Post::with("category")->get();//->paginate(10);
+    	$array_post = Post::with("category")->orderBy('id','desc')->paginate(50);
     	return view("$this->table.view_all",[
     		"array_post" => $array_post
     	]);
@@ -57,7 +58,15 @@ class PostController extends Controller
     }
     public function process_update($id, Request $rq)
     {
-    	Post::find($id)->update($rq->all());
+        if ($rq->has('status')) {
+            $created_at = new DateTime('now');
+            $array_update = array_merge($rq->except('created_at'),['created_at' => $created_at]);
+        }
+        else{
+            $array_update = array_merge($rq->except('created_at'));   
+        }
+        Post::find($id)->update($array_update);
+    	// Post::find($id)->update($rq->all());
 
     	return redirect()->route("$this->table.view_all")->with("success", "Sửa post thành công");
     }
@@ -97,5 +106,12 @@ class PostController extends Controller
         ]);
         // dd($insert_post);
         return redirect()->route("reddit");
+    }
+    public function list_post_confirm()
+    {
+        $array_post = Post::with("category")->paginate(50);
+        return view("$this->table.view_all",[
+            "array_post" => $array_post
+        ]);
     }
 }

@@ -11,7 +11,6 @@ use Session;
 
 class TopicController extends Controller
 {
-<<<<<<< HEAD
     protected $table = "admin.topic";
     public function view_all()
     {
@@ -39,12 +38,6 @@ class TopicController extends Controller
             'description' => $description,
             'created_by' => $user_id,
         ]);
-        // Topic::create($rq->all());
-        // $create = Topic::create(request([
-        //     'name' => request('name'),
-        //     'description' => request('description'),
-        //     'created_by' => $user_id
-        // ]));
     	return redirect()->route("$this->table.view_all")->with("success", "Thêm topic thành công");
     }
     public function view_update($id)
@@ -67,7 +60,6 @@ class TopicController extends Controller
 
         return redirect()->route("$this->table.view_all")->with("success", "Xóa topic thành công");
     }
-=======
     public function view_topic($category)
     {
     	$array_topic = Topic::all();
@@ -83,10 +75,4 @@ class TopicController extends Controller
     {
     	return view ("category");
     }
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 50dca48542ea73065c35dd3d22b0bc76c059df3f
->>>>>>> 87da27f39f848c389e6b3d2a1697f2576f9cf4b3
 }

@@ -66,13 +66,22 @@
                         <li><a href="#">Follow Feed</a></li>
                     </ul>
                 </div>
-                 @if (Session::has('success'))
+           {{--       @if (Session::has('success'))
                             {{ Session::get('success') }}
+                        @endif --}}
+            </div>
+            <div>
+                <span style="color: gray; font-size: 15px">
+                    <strong>
+                        @if (Session::has('wait'))
+                            {{ Session::get('wait') }}
                         @endif
+                    </strong>
+                </span>
             </div>
             <div class="posts">
                 <div class="posts__head">
-                    <div class="posts__topic">Topic</div>
+                    <div class="posts__topic">Title</div>
                     <div class="posts__category">Category</div>
                     <div class="posts__replies">Replies</div>
                     <div class="posts__activity">Activity</div>
@@ -92,25 +101,31 @@
                     </div>
                 </div>
                 @foreach ($array_post as $post)
-                <div class="posts__item">
-                    <div class="posts__section-left">
-                        <div class="posts__topic">
-                            <div class="posts__content">
-                                <a href="{{ route('comments',['id' => $post->id]) }}">
-                                    <h3>{{ $post->title }}</h3>
-                                </a>
+                    @if ($post->status == 1)
+                        <div class="posts__item">
+                            <div class="posts__section-left">
+                                <div class="posts__topic">
+                                    <div class="posts__content">
+                                        <a href="{{ route('comments',['id' => $post->id]) }}">
+                                            <h3>{{ $post->title }}</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="posts__category"><a href="#" class="category">{{ $post->category->name }}</a></div>
                             </div>
+                            <div class="posts__section-right">
+                                <div class="posts__replies">{{ $post->comments->count() }}</div>
+                                <div class="posts__activity">{{ $post->created_at->diffForHumans() }}</div>
+                            </div> 
                         </div>
-                        <div class="posts__category"><a href="#" class="category">{{ $post->category->name }}</a></div>
-                    </div>
-                    <div class="posts__section-right">
-                        <div class="posts__replies">{{ $post->comments->count() }}</div>
-                        <div class="posts__activity">{{ $post->created_at->diffForHumans() }}</div>
-                    </div> 
-                </div>
+                    @endif
                 @endforeach
+                <div style="position: relative; width: 100%; height: 37px; margin: 0; padding: 0">
+                    <div style="position: absolute; top: -20px;">
+                        {{ $array_post->links() }}
+                    </div>
+                </div>
             </div>
-            
         </div>
     </main>
 

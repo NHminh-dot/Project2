@@ -23,7 +23,15 @@
                                 <a class="nav-link" href="{{route('admin.category.view_all')}}"><i class="far fa-sticky-note"></i>Category</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.post.view_all')}}"><i class="far fa-clipboard"></i>Post</a>
+                                <a class="nav-link" {{-- data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2" --}} href="{{route('admin.post.view_all')}}"><i class="far fa-clipboard"></i>Post</a>
+                                {{-- <div id="submenu-2" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="pages/cards.html">Cards <span class="badge badge-secondary">New</span></a>
+                                            <a class="nav-link" href="{{route('admin.post.list_post_confirm')}}">List Post Confirm</a>
+                                        </li>
+                                    </ul>
+                                </div> --}}
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('admin.comment.view_all')}}"><i class="fa fa-fw fa-rocket"></i>Comment</a>
@@ -31,9 +39,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('admin.tag.view_all')}}"><i class="fa fa-fw fa-tag"></i>Tag</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.post_tag.view_all')}}"><i class="fa fa-fw fa-tag"></i>Post Tag</a>
-                            </li>
+                            {{-- <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.post_confirm.view_all')}}"><i class="fa fa-fw fa-tag"></i>Post Tag</a>
+                            </li> --}}
                         </ul>
                     </div>
                 </nav>

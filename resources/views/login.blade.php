@@ -42,7 +42,8 @@
         <div class="container">
             <div class="signup__container">
                 <div class="signup__logo">
-                    <a href="{{route('reddit')}}"><img src="{{asset('storage/WibUwU.png')}}" alt="logo" style="width: 200px;"></a>
+                    {{-- <a href="{{route('reddit')}}"><img src="{{asset('storage/WibUwU.png')}}" alt="logo" style="width: 200px;"></a> --}}
+                    <a href="{{route('reddit')}}"><img src="{{asset('storage/LogoWibu.jpg')}}" alt="logo" style="width: 200px;"></a>
                 </div>
 
                 <div class="signup__head">

@@ -15,7 +15,7 @@ class Post extends Migration
     {
         Schema::create('post', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title', 50);
+            $table->string('title', 200);
             $table->text('content');
             $table->integer('created_by')->unsigned();
             $table->integer('category_id')->unsigned();

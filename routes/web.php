@@ -25,6 +25,7 @@ Route::group(["middleware" => "CheckUser"], function() {
     Route::post("comment_process_insert/{id}","CommentController@comment_process_insert")->name("comment_process_insert");
     Route::get("follow/{id}","Controller@follow")->name("follow");
     Route::get("unfollow/{id}","Controller@unfollow")->name("unfollow");
+    Route::get("profile/{id}","Controller@profile")->name("profile");
 });
 
 
@@ -93,6 +94,7 @@ Route::group(["prefix" => "admin","as" => "admin."], function() {
 			Route::get("view_update/{id}","$controller@view_update")->name("view_update");
 			Route::post("process_update/{id}","$controller@process_update")->name("process_update");
 			Route::get("delete/{id}","$controller@delete")->name("delete");
+			Route::get("list_post_confirm","$controller@list_post_confirm")->name("list_post_confirm");
 		});
 		$controller = "CommentController";
 		Route::group(["prefix" => "comment","as" => "comment."], function() use($controller)
@@ -136,16 +138,16 @@ Route::group(["prefix" => "admin","as" => "admin."], function() {
 			Route::get("delete/{id}","$controller@delete")->name("delete");
 		});
 
-		$controller = "PostTagController";
-		Route::group(["prefix" => "post_tag","as" => "post_tag."], function() use($controller)
-		{
-			Route::get("","$controller@view_all")->name("view_all");
-			Route::get("view_insert","$controller@view_insert")->name("view_insert");
-			Route::post("process_insert","$controller@process_insert")->name("process_insert");  
-			Route::get("view_update/{id}","$controller@view_update")->name("view_update");
-			Route::post("process_update/{id}","$controller@process_update")->name("process_update");
-			Route::get("delete/{id}","$controller@delete")->name("delete");
-		});
+		// $controller = "PostTagController";
+		// Route::group(["prefix" => "post_tag","as" => "post_tag."], function() use($controller)
+		// {
+		// 	Route::get("","$controller@view_all")->name("view_all");
+		// 	Route::get("view_insert","$controller@view_insert")->name("view_insert");
+		// 	Route::post("process_insert","$controller@process_insert")->name("process_insert");  
+		// 	Route::get("view_update/{id}","$controller@view_update")->name("view_update");
+		// 	Route::post("process_update/{id}","$controller@process_update")->name("process_update");
+		// 	Route::get("delete/{id}","$controller@delete")->name("delete");
+		// });
 
 	});
 });

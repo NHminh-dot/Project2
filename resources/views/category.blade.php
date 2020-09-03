@@ -67,6 +67,13 @@
                         @endif
                     </div>
                 </div>
+                <div class="posts">
+                <div class="posts__head">
+                    <div class="posts__topic">Title</div>
+                    <div class="posts__category"></div>
+                    <div class="posts__replies">Replies</div>
+                    <div class="posts__activity">Activity</div>
+                </div>
             @foreach ($category->post as $post)
                 <div class="posts__item">
                     <div class="posts__section-left">
@@ -77,14 +84,16 @@
                                 </a>
                             </div>
                         </div>
-                        {{-- <div class="posts__category"><a href="#" class="category">{{ $category->post->get('content') }}</a></div> --}}
+                        {{-- <div class="posts__category"><a href="#" class="category">{{ $post->content }}</a></div> --}}
                     </div>
                     <div class="posts__section-right">
-                        {{-- <div class="posts__replies">{{ $post->comments->count() }}</div>
-                        <div class="posts__activity">{{ $post->created_at->diffForHumans() }}</div> --}}
+                        <div class="posts__replies">{{ $post->comments->count() }}</div>
+                        <div class="posts__activity">{{ $post->created_at->diffForHumans() }}</div>
                     </div> 
                 </div>
                 @endforeach
+            </div>
+        </div>
     </main>
         <!-- FOOTER -->
     <footer>

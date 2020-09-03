@@ -7,23 +7,23 @@
                     </a>
                 </div>
                 <div class="header__search">
-                    <form action="#">
+                    <form>
                         <label>
                             <i class="icon-Search js-header-search-btn-open"></i>
-                            <input type="search" placeholder="Search all forums" class="form-control">
+                            <input type="search" name="search" placeholder="Search all forums" class="form-control">
                         </label>
                     </form>
-                    <div class="header__search-btn">
-                        <button style="background-color: white;" >
-                            Search
-                        </button>
-                    </div>
+                        {{-- <div class="header__search-btn">
+                            <button style="background-color: white;" >
+                                Search
+                            </button>
+                        </div> --}}
                 </div>
                 <div class="header__user">
                     @if (Session::has('user_id'))
                         <div class="header__user">
                             <div class="header__user-btn" data-dropdown-btn="user">
-                                <img src="{{Session::get('picture')}}" alt="avatar">
+                                <img class="user-avatar" src="{{ asset('storage/' . Session::get('picture')) }}" alt="avatar">
                                 <span>{{Session::get('username')}}
                                 </span>
                                 <i class="icon-Arrow_Below"></i>
@@ -34,6 +34,9 @@
                                     <div class="dropdown__icons">
                                         <a href="{{route('logout')}}"><i class="icon-Logout"></i>Logout</a>
                                     </div>
+                                    {{-- <div class="dropdown__icons">
+                                        <a href="{{ route('profile',['id' => Session::get('user_id')]) }}"><i class="icon-User"></i>Profile</a>
+                                    </div> --}}
                                 </div>
                             </nav>
                         </div>
